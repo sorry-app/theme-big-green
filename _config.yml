@@ -1,0 +1,12 @@
+# General Site Configuration.
+name: ''
+description: ''
+keywords: ''
+url: http://*.sorryapp.com
+
+# Asset Pipeline Settings.
+asset_pipeline:
+    bundle: false           # Default = true
+    compress: false         # Default = true
+    output_path: assets     # Default = assets
+    gzip: false             # Default = false

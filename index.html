@@ -1,0 +1,83 @@
+---
+layout: default
+---
+<!-- Have Jekyll Ignore All Liquid From Hereon In. -->
+{% raw %}
+	<!-- Load in the initial JSON data to save an additional request. -->
+	<script id="apologies-data">[{"created_at":"2013-06-24T11:43:23Z","description":"I'm making some small changes to the MIS, which may cause some temporary slowness or downtime. This shouldn't be more than a minute or two.","id":51,"page_id":9,"state":"closed","updated_at":"2013-06-24T11:46:36Z","updates":[{"content":"I've now made the changes, the MIS should come back to normal in the next few moments.","created_at":"2013-06-24T11:44:57Z","id":143,"incident_id":51,"update_id":null,"updated_at":"2013-06-24T11:44:57Z","user_id":1},{"content":"The MIS now appears to be back to normal, thanks for your understanding while this was happening.","created_at":"2013-06-24T11:46:36Z","id":144,"incident_id":51,"update_id":null,"updated_at":"2013-06-24T11:46:36Z","user_id":1}]},{"created_at":"2013-06-17T18:48:22Z","description":"The MIS will be down for a short while why we made some changes.","id":50,"page_id":9,"state":"closed","updated_at":"2013-06-17T19:13:04Z","updates":[{"content":"The changes have now been made, we should be back online shortly.","created_at":"2013-06-17T18:56:33Z","id":139,"incident_id":50,"update_id":null,"updated_at":"2013-06-17T18:56:33Z","user_id":1},{"content":"We are just waiting for some changes to be made to the main website before we can make our final tests.","created_at":"2013-06-17T18:58:45Z","id":140,"incident_id":50,"update_id":null,"updated_at":"2013-06-17T18:58:45Z","user_id":1},{"content":"Changes have now been made to the website - we are just carrying out some tests.","created_at":"2013-06-17T19:03:42Z","id":141,"incident_id":50,"update_id":null,"updated_at":"2013-06-17T19:03:42Z","user_id":1},{"content":"Tests are all complete and things appear to be working nicely. Thanks for your time.","created_at":"2013-06-17T19:13:04Z","id":142,"incident_id":50,"update_id":null,"updated_at":"2013-06-17T19:13:04Z","user_id":1}]},{"created_at":"2013-06-06T09:38:42Z","description":"The MIS is running very slowly - we are looking in to the issue. Sorry for the trouble.","id":45,"page_id":9,"state":"closed","updated_at":"2013-06-06T10:37:38Z","updates":[{"content":"I'm going to take the MIS offline for a few moments to allow the server to relax.","created_at":"2013-06-06T09:44:44Z","id":129,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T09:44:44Z","user_id":1},{"content":"The problem looks to be slowly recovering - things should be back online shortly.","created_at":"2013-06-06T09:50:20Z","id":130,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T09:50:20Z","user_id":1},{"content":"Hopefully not much longer folks - just waiting for the servers to come back online now.","created_at":"2013-06-06T10:00:23Z","id":131,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T10:00:23Z","user_id":1},{"content":"The MIS is now back up, I'm keeping an eye on things while it settles in.","created_at":"2013-06-06T10:19:30Z","id":132,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T10:19:30Z","user_id":1},{"content":"Good News! The MIS looks to have been running happily for the past 20-30 minutes. Thanks for your patients while I fixed that problem.","created_at":"2013-06-06T10:37:38Z","id":133,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T10:37:38Z","user_id":1},{"content":"I've identified the root problem that is causing the drop in performance - I'm working to resolve this now.","created_at":"2013-06-06T09:42:37Z","id":128,"incident_id":45,"update_id":null,"updated_at":"2013-06-06T09:42:37Z","user_id":1}]},{"created_at":"2013-05-22T10:26:29Z","description":"Emails sent from the MIS to Whitemeadow are not being received. We are investigating the the problem now.","id":26,"page_id":9,"state":"closed","updated_at":"2013-05-22T10:44:26Z","updates":[{"content":"Investigation in to the problem shows that an email sent for customer Groom on the 20th Hard Bounced and therefore the linda@whitemeadowfurniture.co.uk address became marked as inactive and all subsequent email attempts were bypassed.\r\n\r\nI'm going to reactivate the email address so future emails are sent and will come back to Livvy with details of the emails which need to be resent.","created_at":"2013-05-22T10:34:17Z","id":84,"incident_id":26,"update_id":null,"updated_at":"2013-05-22T10:34:17Z","user_id":1},{"content":"The recipient has now been marked as active again so further emails will now be delivered as expected. I've given a list of outstanding documents to Livvy to be worked through but the problem itself has now been solved.\r\n\r\nThanks for your patients while we fixed this.","created_at":"2013-05-22T10:44:26Z","id":85,"incident_id":26,"update_id":null,"updated_at":"2013-05-22T10:44:26Z","user_id":1}]},{"created_at":"2013-05-22T08:43:49Z","description":"We have a server down in Fittleworth, this is currently affecting users logging in to their desktops. We are trying to resolve this quickly.","id":25,"page_id":9,"state":"closed","updated_at":"2013-05-22T09:04:48Z","updates":[{"content":"We have found the problem server and currently trying a forced restart","created_at":"2013-05-22T08:59:26Z","id":81,"incident_id":25,"update_id":null,"updated_at":"2013-05-22T08:59:26Z","user_id":2},{"content":"The Server is responding again, we are now connecting to this to ensure services are running.","created_at":"2013-05-22T09:02:37Z","id":82,"incident_id":25,"update_id":null,"updated_at":"2013-05-22T09:02:37Z","user_id":2},{"content":"Im now logged into the server and services appear to be fine. Users can now log back into their desktops.","created_at":"2013-05-22T09:04:48Z","id":83,"incident_id":25,"update_id":null,"updated_at":"2013-05-22T09:04:48Z","user_id":2}]}]</script>
+
+	<!-- Header Block For Large Status Message -->
+	<header id="current-status" class="current-status sorry-{{sorry()}} container-fluid" ng-switch="sorry()">
+		<h1>Page Title</h1>
+
+		<div ng-switch-when="false">
+			<div class="horizon">
+				<div class="content">
+					<h2 id="status">All Is Well</h2>
+				</div>
+			</div>		
+		</div>
+		<div ng-switch-when="true">
+			<!-- Block For Currently Running apology. -->
+			<section id="current-apologies" ng-show="open_apologies().length">
+				<div class="row-fluid">
+					<div class="span12">
+						<article ng-repeat="apology in apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
+							<!-- Output the title for the apology. -->
+							<h4>
+								<span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+
+								{{apology.description}}
+							</h4>
+
+							<ul class="updates unstyled">
+								<!-- Loop The Updates. -->
+								<li ng-repeat="update in apology.updates">
+									<!-- Output Update Details. -->
+									<time class="live dt" data-stamp="{{update.created_at}}"></time>
+									<span class="dd">{{update.content}}</span>
+								</li>
+
+								<p class="no-updates" ng-hide="apology.updates.length"><!-- t '.no_updates' --></p>
+							</ul>
+						</article>
+					</div>
+				</div>
+			</section>
+		</div>
+	</header>
+
+	<!-- Block For Previously Solved. -->
+	<section id="previous-apologies" ng-show="closed_apologies().length" class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<h3>Previous Apologies</h3>
+
+				<article ng-repeat="apology in apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
+					<!-- Output the title for the apology. -->
+					<h4>
+						<span>Started <time>{{apology.created_at | date:'short'}}</time></span>
+
+						{{apology.description}}
+					</h4>
+
+					<ul class="updates unstyled">
+						<!-- Loop The Updates. -->
+						<li ng-repeat="update in apology.updates">
+							<!-- Output Update Details. -->
+							<time class="live dt">{{update.created_at | date:'short'}}</time>
+							<span class="dd">{{update.content}}</span>
+						</li>
+
+						<p class="no-updates" ng-hide="apology.updates.length"><!-- t '.no_updates' --></p>
+					</ul>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<!-- Close Out With A 'Powered By' Statement. -->
+	<footer>
+		<p class="powered-by"><!-- t 'powered_by' --></p>
+	</footer>
+{% endraw %}

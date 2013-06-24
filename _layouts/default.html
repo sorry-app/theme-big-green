@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- We don't want these pages indexed by Google until BETA. -->
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Dynamicly set the title using the helper methoe. -->
+    <title></title>
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <!-- Include Local CSS Assets. -->
+    {% css_asset_tag global %}
+        # Framework stylesheets.
+        - /_assets/stylesheets/bootstrap.css
+        - /_assets/stylesheets/bootstrap-responsive.css
+
+        # Site specific stylesheets.
+        - /_assets/stylesheets/status-page.css.scss
+    {% endcss_asset_tag %}
+  </head>
+  <body data-key="22244659ec2ca1550461" data-channel="status-page" ng-controller="PageCtrl">
+      <!-- Include Page Content. -->
+      {{content}}
+
+      <!-- Asset Pipeline JS Files. -->
+      {% javascript_asset_tag global %}
+        # Framework assets.
+        - /_assets/javascripts/jquery.js
+        - /_assets/javascripts/moment.js
+        - /_assets/javascripts/angular.min.js
+        - /_assets/javascripts/angular-resource.min.js
+        - /_assets/javascripts/pusher.js
+
+        # Site Assets.
+        - /_assets/javascripts/status-page.js.coffee
+        - /_assets/javascripts/status-page-dynamic.js
+      {% endjavascript_asset_tag %}
+  </body>
+</html>
