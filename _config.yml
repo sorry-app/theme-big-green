@@ -3,6 +3,7 @@ name: ''
 description: ''
 keywords: ''
 url: http://*.sorryapp.com
+exclude: [artwork]
 
 # Asset Pipeline Settings.
 asset_pipeline:
