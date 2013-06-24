@@ -3,7 +3,7 @@ name: ''
 description: ''
 keywords: ''
 url: http://*.sorryapp.com
-exclude: [artwork]
+exclude: [artwork, Gemfile, Gemfile.lock]
 
 # Asset Pipeline Settings.
 asset_pipeline:
