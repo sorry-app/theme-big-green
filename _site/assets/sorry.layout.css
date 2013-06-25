@@ -28,6 +28,7 @@ header {
     padding: 10px 0 40px 0; }
   header .carousel-indicators {
     position: absolute;
+    padding: 15px 0;
     top: 60px;
     left: 60px; }
   header article {
