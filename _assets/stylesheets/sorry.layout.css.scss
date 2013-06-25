@@ -41,8 +41,8 @@ header {
 
 	.carousel-indicators {
 		position:absolute;
-		top:60px;
-		left:60px;
+		top:$layout-gutter;
+		left:$layout-gutter;
 	}
 
 	article {
@@ -107,7 +107,13 @@ ul.updates > li > time {
 
 		article {
 			padding:$mobile-layout-gutter;
-		}		
+		}
+
+		.carousel-indicators {
+			position:static;
+			margin:0 auto;
+			padding:$mobile-layout-gutter;
+		}			
 	}
 
 	ul.updates > li > time {

@@ -74,6 +74,10 @@ ul.updates > li > time {
     line-height: 1.4em; }
   header article {
     padding: 20px; }
+  header .carousel-indicators {
+    position: static;
+    margin: 0 auto;
+    padding: 20px; }
 
   ul.updates > li > time {
     display: block;
