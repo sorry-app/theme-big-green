@@ -21,24 +21,24 @@ var PageCtrl = ['$scope', '$filter', '$http', function($scope, $filter, $http) {
 	$scope.channel = $scope.pusher.subscribe($('body').data('channel'));
 
 	// Laod in the apologies to start with.
-	$scope.apologies = JSON.parse($('#apologies-data').text());
+	$scope.page = JSON.parse($('#apologies-data').text());
 
 	// This method tells us whether the page is in appology state or not.
 	$scope.open_apologies = function() {
 		// Get a filered array of open apologies.
-		return $filter('filter')($scope.apologies, {state:'open'});
+		return $filter('filter')($scope.page.apologies, {state:'open'});
 	};
 
 	// This method tells us whether the page is in appology state or not.
 	$scope.closed_apologies = function() {
 		// Get a filered array of open apologies.
-		return $filter('filter')($scope.apologies, {state:'closed'});
+		return $filter('filter')($scope.page.apologies, {state:'closed'});
 	};		
 
 	// This method tells us whether the page is in appology state or not.
 	$scope.sorry = function() {
 		// Get a filered array of open apologies.
-		var open_apologies = $filter('filter')($scope.apologies, {state:'open'});
+		var open_apologies = $filter('filter')($scope.page.apologies, {state:'open'});
 
 		// Cbeck the number of open apologies.
 		if(open_apologies.length == 0) {
@@ -55,7 +55,7 @@ var PageCtrl = ['$scope', '$filter', '$http', function($scope, $filter, $http) {
 		// An apology has been updated, we must update the model.
 		$scope.$apply(function(){
 			// Update the appropriate record with new details.
-			var found = $filter('find_by_id')($scope.apologies, data.id);
+			var found = $filter('find_by_id')($scope.page.apologies, data.id);
 
 			// Extend the element that we found.
 			$.extend(true, found, data);
@@ -67,7 +67,7 @@ var PageCtrl = ['$scope', '$filter', '$http', function($scope, $filter, $http) {
     	// A new apology has been created.
       	$scope.$apply(function(){
       		// Append it to the scope collection.
-	      	$scope.apologies.push(data);
+	      	$scope.page.apologies.push(data);
 	    });
     });
 }];

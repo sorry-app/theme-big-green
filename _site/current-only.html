@@ -1,112 +1,128 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- We don't want these pages indexed by Google until BETA. -->
-    <meta name="robots" content="noindex, nofollow" />
+        <!-- We don't want these pages indexed by Google until BETA. -->
+        <meta name="robots" content="noindex, nofollow" />
 
-    <!-- Dynamicly set the title using the helper methoe. -->
-    <title></title>
+        <!-- Dynamicly set the title using the helper methoe. -->
+        <title>{{page.name}}</title>
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
+        <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+        <![endif]-->
 
-    <!-- Include Local CSS Assets. -->
-    <link href='/assets/bootstrap.css' rel='stylesheet' type='text/css' />
+        <!-- Include Local CSS Assets. -->
+        <link href='/assets/bootstrap.css' rel='stylesheet' type='text/css' />
 <link href='/assets/bootstrap-responsive.css' rel='stylesheet' type='text/css' />
 <link href='/assets/status-page.css' rel='stylesheet' type='text/css' />
 
-  </head>
-  <body data-key="22244659ec2ca1550461" data-channel="status-page" ng-controller="PageCtrl">
-      <!-- Include Page Content. -->
-      <!-- Load in the initial JSON data to save an additional request. -->
-<script id="apologies-data">[{"created_at":"2013-06-24T11:43:23Z","description":"I'm making some small changes to the MIS, which may cause some temporary slowness or downtime. This shouldn't be more than a minute or two.","id":51,"page_id":9,"state":"open","updated_at":"2013-06-24T11:46:36Z","updates":[{"content":"I've now made the changes, the MIS should come back to normal in the next few moments.","created_at":"2013-06-24T11:44:57Z","id":143,"incident_id":51,"update_id":null,"updated_at":"2013-06-24T11:44:57Z","user_id":1},{"content":"The MIS now appears to be back to normal, thanks for your understanding while this was happening.","created_at":"2013-06-24T11:46:36Z","id":144,"incident_id":51,"update_id":null,"updated_at":"2013-06-24T11:46:36Z","user_id":1}]}]</script>
+    </head>
+    <body data-key="22244659ec2ca1550461" data-channel="status-page" ng-controller="PageCtrl">
+        <!-- Include Page Content. -->
+        <script id="apologies-data" type="application/json">
+            {
+	"name": "Sofas And Stuff",
+	"apologies": [
+		{
+			"state": "open",
+			"created_at": "2013-06-24T11:43:23Z",
+			"description": "We are experiencing issues with the telephones and internet in Woodchester.",
+			"updates": [
+				{
+					"content": "We have spoken to BT about the issue and they are going run line tests.",
+					"created_at": "2013-06-24T11:46:36Z"
+				}
+			]
+		}				
+	]
+}
+        </script>
 
-      <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
-      
-        <!-- Header Block For Large Status Message -->
-        <header id="current-status" class="current-status sorry-{{sorry()}} container-fluid" ng-switch="sorry()">
-          <h1>Page Title</h1>
+        <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
+        
+            <!-- Header Block For Large Status Message -->
+            <header id="current-status" class="current-status sorry-{{sorry()}} container-fluid" ng-switch="sorry()">
+                <h1>{{page.name}}</h1>
 
-          <div ng-switch-when="false">
-            <div class="horizon">
-              <div class="content">
-                <h2 id="status">All Is Well</h2>
-              </div>
-            </div>    
-          </div>
-          <div ng-switch-when="true">
-            <!-- Block For Currently Running apology. -->
-            <section id="current-apologies" ng-show="open_apologies().length">
-              <div class="row-fluid">
-                <div class="span12">
-                  <article ng-repeat="apology in apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
-                    <!-- Output the title for the apology. -->
-                    <h4>
-                      <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
-
-                      {{apology.description}}
-                    </h4>
-
-                    <ul class="updates unstyled">
-                      <!-- Loop The Updates. -->
-                      <li ng-repeat="update in apology.updates">
-                        <!-- Output Update Details. -->
-                        <time class="live dt" data-stamp="{{update.created_at}}"></time>
-                        <span class="dd">{{update.content}}</span>
-                      </li>
-
-                      <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
-                    </ul>
-                  </article>
+                <div ng-switch-when="false">
+                    <div class="horizon">
+                        <div class="content">
+                            <h2 id="status">All Is Well</h2>
+                        </div>
+                    </div>    
                 </div>
-              </div>
+                <div ng-switch-when="true">
+                    <!-- Block For Currently Running apology. -->
+                    <section id="current-apologies" ng-show="open_apologies().length">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
+                                    <!-- Output the title for the apology. -->
+                                    <h4>
+                                        <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+
+                                        {{apology.description}}
+                                    </h4>
+
+                                    <ul class="updates unstyled">
+                                        <!-- Loop The Updates. -->
+                                        <li ng-repeat="update in apology.updates">
+                                            <!-- Output Update Details. -->
+                                            <time class="live dt" data-stamp="{{update.created_at}}"></time>
+                                            <span class="dd">{{update.content}}</span>
+                                        </li>
+
+                                        <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
+                                    </ul>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </header>
+
+            <!-- Block For Previously Solved. -->
+            <section id="previous-apologies" ng-show="closed_apologies().length" class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12">
+                        <h3>Previous Apologies</h3>
+
+                        <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
+                            <!-- Output the title for the apology. -->
+                            <h4>
+                                <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
+
+                                {{apology.description}}
+                            </h4>
+
+                            <ul class="updates unstyled">
+                                <!-- Loop The Updates. -->
+                                <li ng-repeat="update in apology.updates">
+                                    <!-- Output Update Details. -->
+                                    <time class="live dt">{{update.created_at | date:'short'}}</time>
+                                    <span class="dd">{{update.content}}</span>
+                                </li>
+
+                                <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
             </section>
-          </div>
-        </header>
 
-        <!-- Block For Previously Solved. -->
-        <section id="previous-apologies" ng-show="closed_apologies().length" class="container-fluid">
-          <div class="row-fluid">
-            <div class="span12">
-              <h3>Previous Apologies</h3>
+            <!-- Close Out With A 'Powered By' Statement. -->
+            <footer>
+                <p class="powered-by">Powered By Sorry</p>
+            </footer>
+        
 
-              <article ng-repeat="apology in apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
-                <!-- Output the title for the apology. -->
-                <h4>
-                  <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
-
-                  {{apology.description}}
-                </h4>
-
-                <ul class="updates unstyled">
-                  <!-- Loop The Updates. -->
-                  <li ng-repeat="update in apology.updates">
-                    <!-- Output Update Details. -->
-                    <time class="live dt">{{update.created_at | date:'short'}}</time>
-                    <span class="dd">{{update.content}}</span>
-                  </li>
-
-                  <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
-                </ul>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <!-- Close Out With A 'Powered By' Statement. -->
-        <footer>
-          <p class="powered-by">Powered By Sorry</p>
-        </footer>
-      
-
-      <!-- Asset Pipeline JS Files. -->
-      <script src='/assets/jquery.js' type='text/javascript'></script>
+        <!-- Asset Pipeline JS Files. -->
+        <script src='/assets/jquery.js' type='text/javascript'></script>
 <script src='/assets/moment.js' type='text/javascript'></script>
 <script src='/assets/angular.min.js' type='text/javascript'></script>
 <script src='/assets/angular-resource.min.js' type='text/javascript'></script>
@@ -114,5 +130,5 @@
 <script src='/assets/status-page.js' type='text/javascript'></script>
 <script src='/assets/status-page-dynamic.js' type='text/javascript'></script>
 
-  </body>
+    </body>
 </html>
