@@ -12,7 +12,7 @@ header {
     position: absolute;
     top: 0;
     right: 0;
-    padding: 50px;
+    padding: 60px;
     margin: 0; }
   header .current-status {
     display: inline-block;
@@ -27,7 +27,7 @@ header {
     width: 100%;
     padding: 10px 0 40px 0; }
   header article {
-    padding: 50px; }
+    padding: 60px; }
 
 header:before {
   content: '';
@@ -38,13 +38,13 @@ header:before {
 
 /* Core Sections. */
 section.previous-apologies {
-  padding: 50px; }
+  padding: 60px; }
   section.previous-apologies article {
-    padding-bottom: 50px; }
+    padding-bottom: 60px; }
 
 /* Footer. */
 footer {
-  padding: 50px; }
+  padding: 60px; }
 
 /* Lists. */
 ul.updates > li {
