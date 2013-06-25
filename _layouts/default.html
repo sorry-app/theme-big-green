@@ -41,7 +41,7 @@
         {% raw %}
 
             <!-- Header Block For Large Status Message -->
-            <header class="sorry-{{sorry()}}">
+            <header class="sorry-{{sorry()}} carousel slide" id="carousel">
                 <h1>{{page.name}} Status Page</h1>
 
                 <div class="current-status" ng-switch="sorry()">
@@ -51,22 +51,24 @@
                         </article>
                     </div>
                     <div ng-switch-when="true">
-                        <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
-                            <!-- Output the title for the apology. -->
-                            <h2>
-                                <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+                        <div class="carousel-inner">
+                            <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology item" ng-class="{active : $first, item : true}" id="apology_{apology.id}">
+                                <!-- Output the title for the apology. -->
+                                <h2>
+                                    <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
 
-                                {{apology.description}}
-                            </h2>
+                                    {{apology.description}}
+                                </h2>
 
-                            <h3 ng-repeat="update in apology.updates | limitTo:1">
-                                <span>
-                                    Last Updated 
-                                    <time class="live dt" data-stamp="{{update.created_at}}"></time>
-                                </span>
-                                {{update.content}}
-                            </h3>
-                        </article>
+                                <h3 ng-repeat="update in apology.updates | limitTo:1">
+                                    <span>
+                                        Last Updated 
+                                        <time class="live dt" data-stamp="{{update.created_at}}"></time>
+                                    </span>
+                                    {{update.content}}
+                                </h3>
+                            </article>
+                        </div>
                     </div>
                 </div>
 
@@ -106,12 +108,13 @@
         {% javascript_asset_tag global %}
             # Framework assets.
             - /_assets/javascripts/jquery.js
+            - /_assets/javascripts/bootstrap.js
             - /_assets/javascripts/moment.js
             - /_assets/javascripts/angular.min.js
 
             # Site Assets.
-            - /_assets/javascripts/status-page.js.coffee
             - /_assets/javascripts/status-page-dynamic.js
+            - /_assets/javascripts/status-page.js.coffee
         {% endjavascript_asset_tag %}
     </body>
 </html>
