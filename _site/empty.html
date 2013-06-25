@@ -38,69 +38,49 @@
                 <h1>{{page.name}}</h1>
 
                 <div ng-switch-when="false">
-                    <div class="horizon">
-                        <div class="content">
-                            <h2 id="status">All Is Well</h2>
-                        </div>
-                    </div>    
+                    <h2 id="status">All Is Well</h2>
                 </div>
                 <div ng-switch-when="true">
-                    <!-- Block For Currently Running apology. -->
-                    <section id="current-apologies" ng-show="open_apologies().length">
-                        <div class="row-fluid">
-                            <div class="span12">
-                                <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
-                                    <!-- Output the title for the apology. -->
-                                    <h4>
-                                        <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+                    <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
+                        <!-- Output the title for the apology. -->
+                        <h2>
+                            <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
 
-                                        {{apology.description}}
-                                    </h4>
+                            {{apology.description}}
+                        </h2>
 
-                                    <ul class="updates unstyled">
-                                        <!-- Loop The Updates. -->
-                                        <li ng-repeat="update in apology.updates">
-                                            <!-- Output Update Details. -->
-                                            <time class="live dt" data-stamp="{{update.created_at}}"></time>
-                                            <span class="dd">{{update.content}}</span>
-                                        </li>
-
-                                        <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
-                                    </ul>
-                                </article>
-                            </div>
-                        </div>
-                    </section>
+                        <h3 ng-repeat="update in apology.updates | limitTo:1">
+                            <span>
+                                Last Updated 
+                                <time class="live dt" data-stamp="{{update.created_at}}"></time>
+                            </span>
+                            {{update.content}}
+                        </h3>
+                    </article>
                 </div>
             </header>
 
             <!-- Block For Previously Solved. -->
-            <section id="previous-apologies" ng-show="closed_apologies().length" class="container-fluid">
-                <div class="row-fluid">
-                    <div class="span12">
-                        <h3>Previous Apologies</h3>
+            <section id="previous-apologies" ng-show="closed_apologies().length">
+                <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
+                    <!-- Output the title for the apology. -->
+                    <h4>
+                        <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
 
-                        <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
-                            <!-- Output the title for the apology. -->
-                            <h4>
-                                <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
+                        {{apology.description}}
+                    </h4>
 
-                                {{apology.description}}
-                            </h4>
+                    <ul class="updates unstyled">
+                        <!-- Loop The Updates. -->
+                        <li ng-repeat="update in apology.updates">
+                            <!-- Output Update Details. -->
+                            <time class="live dt">{{update.created_at | date:'short'}}</time>
+                            <span class="dd">{{update.content}}</span>
+                        </li>
 
-                            <ul class="updates unstyled">
-                                <!-- Loop The Updates. -->
-                                <li ng-repeat="update in apology.updates">
-                                    <!-- Output Update Details. -->
-                                    <time class="live dt">{{update.created_at | date:'short'}}</time>
-                                    <span class="dd">{{update.content}}</span>
-                                </li>
-
-                                <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
-                            </ul>
-                        </article>
-                    </div>
-                </div>
+                        <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
+                    </ul>
+                </article>
             </section>
 
             <!-- Close Out With A 'Powered By' Statement. -->
