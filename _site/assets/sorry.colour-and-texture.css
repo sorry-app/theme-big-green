@@ -16,3 +16,10 @@ header article {
 /* Previous Apologies Block */
 .previous-apologies {
   color: #666666 !important; }
+
+/* Links */
+a.see-below {
+  color: white; }
+
+a.see-below:hover {
+  background-color: rgba(0, 0, 0, 0.05); }

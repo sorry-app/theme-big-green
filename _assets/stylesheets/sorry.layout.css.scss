@@ -23,6 +23,14 @@ header {
 		text-align:left;
 		width:99%;
 	}
+
+	a.see-below {
+		position:absolute;
+		display:block;
+		bottom:0;
+		text-align:center;
+		width:100%;
+	}
 }
 
 header:before {
