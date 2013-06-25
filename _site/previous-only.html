@@ -88,7 +88,7 @@
                     </div>
                     <div ng-switch-when="true">
                         <div class="carousel-inner">
-                            <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology item" ng-class="{active : $first, item : true}" id="apology_{apology.id}">
+                            <article ng-repeat="apology in current_apologies()" class="apology item" ng-class="{active : $first, item : true}" id="apology_{apology.id}">
                                 <!-- Output the title for the apology. -->
                                 <h2>
                                     <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
@@ -108,12 +108,16 @@
                     </div>
                 </div>
 
+                <ol class="carousel-indicators" ng-show="current_apologies().length > 1">
+                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
+                </ol>
+
                 <a href="#previous-apologies" class="see-below">&#65088;</a>
             </header>
 
             <!-- Block For Previously Solved. -->
             <section id="previous-apologies" class="previous-apologies">
-                <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
+                <article ng-repeat="apology in previous_apologies()" class="apology" id="apology_{apology.id}">
                     <!-- Output the title for the apology. -->
                     <h4>
                         <span>Started <time>{{apology.created_at | date:'short'}}</time></span>

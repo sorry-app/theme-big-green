@@ -39,6 +39,12 @@ header {
 		padding:10px 0 40px 0;
 	}
 
+	.carousel-indicators {
+		position:absolute;
+		top:60px;
+		left:60px;
+	}
+
 	article {
 		padding:$layout-gutter;
 	}

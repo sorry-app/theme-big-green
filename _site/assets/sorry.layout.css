@@ -26,6 +26,10 @@ header {
     text-align: center;
     width: 100%;
     padding: 10px 0 40px 0; }
+  header .carousel-indicators {
+    position: absolute;
+    top: 60px;
+    left: 60px; }
   header article {
     padding: 60px; }
 
