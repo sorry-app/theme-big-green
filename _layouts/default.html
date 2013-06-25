@@ -26,7 +26,7 @@
             - /_assets/stylesheets/status-page.css.scss
         {% endcss_asset_tag %}
     </head>
-    <body data-key="22244659ec2ca1550461" data-channel="status-page" ng-controller="PageCtrl">
+    <body ng-controller="PageCtrl">
         <!-- Include Page Content. -->
         <script id="apologies-data" type="application/json">
             {{content}}
@@ -62,7 +62,7 @@
             </header>
 
             <!-- Block For Previously Solved. -->
-            <section id="previous-apologies" ng-show="closed_apologies().length">
+            <section id="previous-apologies">
                 <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
                     <!-- Output the title for the apology. -->
                     <h4>
@@ -97,7 +97,6 @@
             - /_assets/javascripts/moment.js
             - /_assets/javascripts/angular.min.js
             - /_assets/javascripts/angular-resource.min.js
-            - /_assets/javascripts/pusher.js
 
             # Site Assets.
             - /_assets/javascripts/status-page.js.coffee
