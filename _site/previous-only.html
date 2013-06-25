@@ -82,7 +82,9 @@
 
                 <div class="current-status" ng-switch="sorry()">
                     <div ng-switch-when="false">
-                        <h2 id="status">All Is Well</h2>
+                        <article>
+                            <h2 id="status">All Is Well</h2>
+                        </article>
                     </div>
                     <div ng-switch-when="true">
                         <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">

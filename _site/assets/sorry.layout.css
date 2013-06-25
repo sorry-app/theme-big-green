@@ -23,3 +23,6 @@ header:before {
   height: 100%;
   vertical-align: middle;
   background-color: #FFF; }
+
+article {
+  padding: 50px; }

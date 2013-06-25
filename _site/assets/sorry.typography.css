@@ -15,7 +15,8 @@ h2 {
   font-size: 2.286em; }
 
 h3 {
-  font-size: 1.429em; }
+  font-size: 1.429em;
+  line-height: 1.429em; }
 
 h4 {
   font-family: "OpenSansSemibold";
