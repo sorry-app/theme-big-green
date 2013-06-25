@@ -1,3 +1,4 @@
+/* Commonly Used Layout Elements. */
 /* Default  Layout. */
 body, html {
   height: 100%; }
@@ -10,7 +11,9 @@ header {
   header h1 {
     position: absolute;
     top: 0;
-    right: 0; }
+    right: 0;
+    padding: 50px;
+    margin: 0; }
   header .current-status {
     display: inline-block;
     vertical-align: middle;
@@ -22,6 +25,8 @@ header {
     bottom: 0;
     text-align: center;
     width: 100%; }
+  header article {
+    padding: 50px; }
 
 header:before {
   content: '';
@@ -30,5 +35,19 @@ header:before {
   vertical-align: middle;
   background-color: #FFF; }
 
-article {
+/* Core Sections. */
+section.previous-apologies {
   padding: 50px; }
+  section.previous-apologies article {
+    padding-bottom: 50px; }
+
+/* Footer. */
+footer {
+  padding: 50px; }
+
+/* Lists. */
+ul.updates > li {
+  margin: 1.4em 0; }
+
+ul.updates > li > time {
+  margin-right: 2em; }

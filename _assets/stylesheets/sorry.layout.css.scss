@@ -1,3 +1,6 @@
+/* Commonly Used Layout Elements. */
+$layout-gutter: 50px;
+
 /* Default  Layout. */
 
 body, html {
@@ -15,6 +18,8 @@ header {
 		position:absolute;
 		top:0;
 		right:0;
+		padding:$layout-gutter;
+		margin:0;
 	}
 
 	.current-status {
@@ -31,6 +36,10 @@ header {
 		text-align:center;
 		width:100%;
 	}
+
+	article {
+		padding:$layout-gutter;
+	}
 }
 
 header:before {
@@ -41,6 +50,28 @@ header:before {
   background-color:#FFF;
 }
 
-article {
-	padding:50px;
+/* Core Sections. */
+
+section.previous-apologies {
+	padding:$layout-gutter;
+
+	article {
+		padding-bottom:$layout-gutter;
+	}
+}
+
+/* Footer. */
+
+footer {
+	padding:$layout-gutter;
+}
+
+/* Lists. */
+
+ul.updates > li {
+	margin:1.4em 0;
+}
+
+ul.updates > li > time {
+	margin-right:2em;
 }

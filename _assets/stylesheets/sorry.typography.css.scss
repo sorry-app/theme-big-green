@@ -28,6 +28,8 @@ h3 {
 h4 {
 	font-family: "OpenSansSemibold";
 	font-size: 1.714em;
+	line-height: 1.3em;
+	margin-bottom:1em;
 }
 
 h2 span, h3 span, h4 span {
@@ -36,7 +38,7 @@ h2 span, h3 span, h4 span {
 	opacity:0.7;
 }
 
-/* Lists */
+/* Lists. */
 
 ul.updates > li {
 	font-size:1.143em;
@@ -46,7 +48,7 @@ ul.updates > li > time {
 	opacity: 0.7;
 }
 
-/* Footer */
+/* Footer. */
 
 footer {
 	text-align:right;
@@ -54,7 +56,7 @@ footer {
 	font-size: 1.143em;
 }
 
-/* Links */
+/* Links. */
 
 a.see-below {
 	font-size:2em;
