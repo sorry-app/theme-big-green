@@ -92,7 +92,7 @@
                     </div>
                     <div ng-switch-when="true">
                         <div class="carousel-inner">
-                            <article ng-repeat="apology in current_apologies()" class="apology item" ng-class="{active : $first, item : true}" id="apology_{apology.id}">
+                            <article ng-repeat="apology in current_apologies()" class="apology item" ng-class="{active : $first, item : true}">
                                 <!-- Output the title for the apology. -->
                                 <h2>
                                     <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
