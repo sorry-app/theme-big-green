@@ -42,6 +42,10 @@ footer {
   opacity: 0.7;
   font-size: 1.143em; }
 
+footer a {
+  color: #333;
+  opacity: 1; }
+
 /* Links. */
 a.see-below {
   font-size: 2em;
