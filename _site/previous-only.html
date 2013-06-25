@@ -103,7 +103,7 @@
             </header>
 
             <!-- Block For Previously Solved. -->
-            <section id="previous-apologies">
+            <section id="previous-apologies" class="previous-apologies">
                 <article ng-repeat="apology in page.apologies | filter:{state:'closed'}" class="apology" id="apology_{apology.id}">
                     <!-- Output the title for the apology. -->
                     <h4>
@@ -116,7 +116,7 @@
                         <!-- Loop The Updates. -->
                         <li ng-repeat="update in apology.updates">
                             <!-- Output Update Details. -->
-                            <time class="live dt">{{update.created_at | date:'short'}}</time>
+                            <time class="dt">{{update.created_at | date:'short'}}</time>
                             <span class="dd">{{update.content}}</span>
                         </li>
 

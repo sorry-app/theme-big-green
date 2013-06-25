@@ -1,14 +1,11 @@
-/*
-	Color Pallet
-*/
+/* Color Pallet */
 $color-status-green: #7AB800;
 $color-status-orange: #F86F24;
 $color-white: #FFFFFF;
 $color-faded-white: rgba(255, 255, 255, 0.1);
+$color-grey: #666;
 
-/*
-	Header Box.
-*/
+/* Header Box. */
 
 header {
 	color: $color-white !important;
@@ -22,10 +19,14 @@ header.sorry-false {
 	background-color: $color-status-green;
 }
 
-/*
-	Apology Blocks.
-*/
+/* Apology Blocks. */
 
 header article {
 	background-color: $color-faded-white;
+}
+
+/* Previous Apologies Block */
+
+.previous-apologies {
+	color: $color-grey !important;
 }

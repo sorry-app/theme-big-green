@@ -1,9 +1,5 @@
-/*
-	Color Pallet
-*/
-/*
-	Header Box.
-*/
+/* Color Pallet */
+/* Header Box. */
 header {
   color: white !important; }
 
@@ -13,8 +9,10 @@ header.sorry-true {
 header.sorry-false {
   background-color: #7ab800; }
 
-/*
-	Apology Blocks.
-*/
+/* Apology Blocks. */
 header article {
   background-color: rgba(255, 255, 255, 0.1); }
+
+/* Previous Apologies Block */
+.previous-apologies {
+  color: #666666 !important; }
