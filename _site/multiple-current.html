@@ -91,10 +91,6 @@
             <header class="sorry-{{sorry()}} carousel slide" id="carousel">
                 <h1>{{page.name}} Status Page</h1>
 
-                <ol class="carousel-indicators" ng-show="current_apologies().length > 1">
-                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
-                </ol>
-
                 <div class="current-status" ng-switch="sorry()">
                     <div ng-switch-when="false">
                         <article>
@@ -122,6 +118,10 @@
                         </div>
                     </div>
                 </div>
+
+                <ol class="carousel-indicators" ng-show="current_apologies().length > 1">
+                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
+                </ol>                
 
                 <a href="#previous-apologies" class="see-below">&#65088;</a>
             </header>
