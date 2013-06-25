@@ -1,3 +1,14 @@
 /*
 	Color Pallet
 */
+/*
+	Header Box.
+*/
+header {
+  color: white !important; }
+
+header.sorry-true {
+  background-color: #f86f24; }
+
+header.sorry-false {
+  background-color: #7ab800; }

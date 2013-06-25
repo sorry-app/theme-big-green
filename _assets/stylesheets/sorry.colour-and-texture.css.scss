@@ -3,3 +3,20 @@
 */
 $color-status-green: #7AB800;
 $color-status-orange: #F86F24;
+$color-white: #FFFFFF;
+
+/*
+	Header Box.
+*/
+
+header {
+	color: $color-white !important;
+}
+
+header.sorry-true {
+	background-color: $color-status-orange;
+}
+
+header.sorry-false {
+	background-color: $color-status-green;
+}
