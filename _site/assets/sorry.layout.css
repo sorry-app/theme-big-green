@@ -44,6 +44,7 @@ section.previous-apologies {
 
 /* Footer. */
 footer {
+  text-align: right;
   padding: 60px; }
 
 /* Lists. */
@@ -52,3 +53,33 @@ ul.updates > li {
 
 ul.updates > li > time {
   margin-right: 2em; }
+
+/* Mobile Styles. */
+@media (max-width: 767px) {
+  body {
+    padding-right: 0;
+    padding-left: 0; }
+
+  header:before {
+    display: none; }
+
+  header h1 {
+    position: static;
+    padding: 20px;
+    text-align: left;
+    line-height: 1.4em; }
+  header article {
+    padding: 20px; }
+
+  ul.updates > li > time {
+    display: block;
+    margin-bottom: 1em; }
+
+  section.previous-apologies {
+    padding: 20px; }
+    section.previous-apologies article {
+      padding-bottom: 20px; }
+
+  footer {
+    text-align: left;
+    padding: 20px; } }

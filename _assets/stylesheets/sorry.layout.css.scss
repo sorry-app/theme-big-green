@@ -1,5 +1,6 @@
 /* Commonly Used Layout Elements. */
 $layout-gutter: 60px;
+$mobile-layout-gutter: 20px;
 
 /* Default  Layout. */
 
@@ -64,6 +65,7 @@ section.previous-apologies {
 /* Footer. */
 
 footer {
+	text-align:right;
 	padding:$layout-gutter;
 }
 
@@ -75,4 +77,48 @@ ul.updates > li {
 
 ul.updates > li > time {
 	margin-right:2em;
+}
+
+/* Mobile Styles. */
+
+@media (max-width: 767px) {
+	body {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	header:before {
+	  display:none;	
+	}
+
+	header {
+		h1 {
+			position:static;
+			padding:$mobile-layout-gutter;
+			text-align:left;
+			line-height:1.4em;
+		}
+
+		article {
+			padding:$mobile-layout-gutter;
+		}		
+	}
+
+	ul.updates > li > time {
+		display:block;
+		margin-bottom:1em;
+	}
+
+	section.previous-apologies {
+		padding:$mobile-layout-gutter;
+
+		article {
+			padding-bottom:$mobile-layout-gutter;
+		}
+	}
+
+	footer {
+		text-align:left;
+		padding:$mobile-layout-gutter;
+	}	
 }
