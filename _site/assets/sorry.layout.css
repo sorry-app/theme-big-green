@@ -3,6 +3,7 @@ body, html {
   height: 100%; }
 
 /* Header Block Layouts. */
+/* Vertical Centering Trick: http://css-tricks.com/centering-in-the-unknown/ */
 header {
   height: 100%;
   text-align: center; }
@@ -10,17 +11,15 @@ header {
     position: absolute;
     top: 0;
     right: 0; }
+  header .current-status {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    width: 99%; }
 
-/* The ghost, nudged to maintain perfect centering */
 header:before {
   content: '';
   display: inline-block;
   height: 100%;
   vertical-align: middle;
   background-color: #FFF; }
-
-.current-status {
-  display: inline-block;
-  vertical-align: middle;
-  text-align: left;
-  width: 99%; }
