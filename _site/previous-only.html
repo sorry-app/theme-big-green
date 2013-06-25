@@ -18,7 +18,6 @@
 
         <!-- Include Local CSS Assets. -->
         <link href='/assets/bootstrap.css' rel='stylesheet' type='text/css' />
-<link href='/assets/bootstrap-responsive.css' rel='stylesheet' type='text/css' />
 <link href='/assets/opensans.css' rel='stylesheet' type='text/css' />
 <link href='/assets/sorry.layout.css' rel='stylesheet' type='text/css' />
 <link href='/assets/sorry.colour-and-texture.css' rel='stylesheet' type='text/css' />
@@ -75,30 +74,33 @@
 
         <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
         
+
             <!-- Header Block For Large Status Message -->
-            <header id="current-status" class="current-status sorry-{{sorry()}} container-fluid" ng-switch="sorry()">
-                <h1>{{page.name}}</h1>
+            <header class="sorry-{{sorry()}}">
+                <h1>{{page.name}} Status Page</h1>
 
-                <div ng-switch-when="false">
-                    <h2 id="status">All Is Well</h2>
-                </div>
-                <div ng-switch-when="true">
-                    <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
-                        <!-- Output the title for the apology. -->
-                        <h2>
-                            <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+                <div class="current-status" ng-switch="sorry()">
+                    <div ng-switch-when="false">
+                        <h2 id="status">All Is Well</h2>
+                    </div>
+                    <div ng-switch-when="true">
+                        <article ng-repeat="apology in page.apologies | filter:{state:'open'}" class="apology" id="apology_{apology.id}">
+                            <!-- Output the title for the apology. -->
+                            <h2>
+                                <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
 
-                            {{apology.description}}
-                        </h2>
+                                {{apology.description}}
+                            </h2>
 
-                        <h3 ng-repeat="update in apology.updates | limitTo:1">
-                            <span>
-                                Last Updated 
-                                <time class="live dt" data-stamp="{{update.created_at}}"></time>
-                            </span>
-                            {{update.content}}
-                        </h3>
-                    </article>
+                            <h3 ng-repeat="update in apology.updates | limitTo:1">
+                                <span>
+                                    Last Updated 
+                                    <time class="live dt" data-stamp="{{update.created_at}}"></time>
+                                </span>
+                                {{update.content}}
+                            </h3>
+                        </article>
+                    </div>
                 </div>
             </header>
 
