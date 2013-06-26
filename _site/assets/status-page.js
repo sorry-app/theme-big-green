@@ -8,11 +8,7 @@
       });
     };
     nIntervId = setInterval(updateTimes, 1000);
-    updateTimes();
-    return $("#carousel").carousel({
-      interval: 5000,
-      pause: ""
-    });
+    return updateTimes();
   });
 
 }).call(this);

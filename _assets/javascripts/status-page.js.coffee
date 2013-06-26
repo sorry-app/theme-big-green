@@ -14,8 +14,3 @@ jQuery ->
   
   # Update the times for the first time.
   updateTimes()
-
-  # Kick-off a carousel for the apologies.
-  $("#carousel").carousel
-    interval: 5000
-    pause: ""

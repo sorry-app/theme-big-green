@@ -33,6 +33,14 @@
       # We have some open apologies, so return error state.
       return true
 
+  # Kick-off a carousel for the apologies.
+  # First check to see if the carousel is already defined.
+  if $scope.current_apologies().length > 1
+    # We have more than a single appology so we want to start the carousel.
+    $("#carousel").carousel
+      interval: 5000 # Rotate every 5 seconds.
+      pause: "" # Don't pause on mouse hover.
+
   # Bind for the apology updated event.
   $scope.channel.bind "apology-updated", (data) ->
     # An apology has been updated, we must update the model.
@@ -50,5 +58,15 @@
     $scope.$apply ->
       # Append it to the scope collection.
       $scope.page.apologies.push data
+
+  # Watch for changes to the number of open apologies.
+  $scope.$watch 'current_apologies().length', (newval, oldval) ->
+    # Watch for the switch to multiple current appologies.
+    if oldval == 1 and newval == 2
+      # We now have multiple current apologies, so start cycling.
+      $("#carousel").carousel 'cycle'
+    else if oldval == 2 and newval == 1
+      # We have gone from multiple to single apologies, stop cycling.
+      $("#carousel").carousel 'pause'
 
 ]

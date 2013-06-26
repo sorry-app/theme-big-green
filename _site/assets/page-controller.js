@@ -21,6 +21,12 @@
           return true;
         }
       };
+      if ($scope.current_apologies().length > 1) {
+        $("#carousel").carousel({
+          interval: 5000,
+          pause: ""
+        });
+      }
       $scope.channel.bind("apology-updated", function(data) {
         return $scope.$apply(function() {
           var found;
@@ -31,10 +37,17 @@
           return $.extend(true, found[0], data);
         });
       });
-      return $scope.channel.bind("apology-created", function(data) {
+      $scope.channel.bind("apology-created", function(data) {
         return $scope.$apply(function() {
           return $scope.page.apologies.push(data);
         });
+      });
+      return $scope.$watch('current_apologies().length', function(newval, oldval) {
+        if (oldval === 1 && newval === 2) {
+          return $("#carousel").carousel('cycle');
+        } else if (oldval === 2 && newval === 1) {
+          return $("#carousel").carousel('pause');
+        }
       });
     }
   ];
