@@ -28,74 +28,6 @@
 
     </head>
     <body ng-controller="PageCtrl">
-        <!-- Include Page Content. -->
-        <script id="apologies-data" type="application/json">
-            {
-	"name": "Sofas And Stuff",
-	"apologies": [
-		{
-			"id":"1",
-			"state": "open",
-			"created_at": "2013-05-24T11:43:23Z",
-			"description": "I'm an currently running appology.",
-			"updates": [
-				{
-					"id":"1",
-					"content": "I'm it's one and only update.",
-					"created_at": "2013-06-24T11:46:36Z"
-				}
-			]
-		},
-		{
-			"id":"2",
-			"state": "closed",
-			"created_at": "2013-06-24T11:43:23Z",
-			"description": "I'm a previous apology which has now been closed off.",
-			"updates": [
-				{
-					"id":"2",
-					"content": "I'm the first update that was added.",
-					"created_at": "2013-06-25T11:46:36Z"
-				},
-				{
-					"id":"3",
-					"content": "I'm the second update which was added.",
-					"created_at": "2013-06-25T12:46:36Z"
-				},
-				{
-					"id":"4",
-					"content": "I'm the last update which was added.",
-					"created_at": "2013-06-25T13:46:36Z"
-				}
-			]
-		},
-		{
-			"id":"1",
-			"state": "closed",
-			"created_at": "2013-07-24T11:43:23Z",
-			"description": "I'm another previous apology which has now been closed off.",
-			"updates": [
-				{
-					"id":"5",
-					"content": "I'm the first update that was added.",
-					"created_at": "2013-06-25T11:46:36Z"
-				},
-				{
-					"id":"6",
-					"content": "I'm the second update which was added.",
-					"created_at": "2013-06-25T12:46:36Z"
-				},
-				{
-					"id":"7",
-					"content": "I'm the last update which was added.",
-					"created_at": "2013-06-25T13:46:36Z"
-				}
-			]
-		}				
-	]
-}
-        </script>
-
         <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
         
             <!-- Header Block For Large Status Message -->
@@ -185,6 +117,74 @@
                 <p class="powered-by">Powered By <a href="http://www.sorry.io">Sorry</a></p>
             </footer>
         
+
+        <!-- Include Page Content. -->
+        <noscript id="apologies-data">
+            {
+	"name": "Sofas And Stuff",
+	"apologies": [
+		{
+			"id":"1",
+			"state": "open",
+			"created_at": "2013-05-24T11:43:23Z",
+			"description": "I'm an currently running appology.",
+			"updates": [
+				{
+					"id":"1",
+					"content": "I'm it's one and only update.",
+					"created_at": "2013-06-24T11:46:36Z"
+				}
+			]
+		},
+		{
+			"id":"2",
+			"state": "closed",
+			"created_at": "2013-06-24T11:43:23Z",
+			"description": "I'm a previous apology which has now been closed off.",
+			"updates": [
+				{
+					"id":"2",
+					"content": "I'm the first update that was added.",
+					"created_at": "2013-06-25T11:46:36Z"
+				},
+				{
+					"id":"3",
+					"content": "I'm the second update which was added.",
+					"created_at": "2013-06-25T12:46:36Z"
+				},
+				{
+					"id":"4",
+					"content": "I'm the last update which was added.",
+					"created_at": "2013-06-25T13:46:36Z"
+				}
+			]
+		},
+		{
+			"id":"1",
+			"state": "closed",
+			"created_at": "2013-07-24T11:43:23Z",
+			"description": "I'm another previous apology which has now been closed off.",
+			"updates": [
+				{
+					"id":"5",
+					"content": "I'm the first update that was added.",
+					"created_at": "2013-06-25T11:46:36Z"
+				},
+				{
+					"id":"6",
+					"content": "I'm the second update which was added.",
+					"created_at": "2013-06-25T12:46:36Z"
+				},
+				{
+					"id":"7",
+					"content": "I'm the last update which was added.",
+					"created_at": "2013-06-25T13:46:36Z"
+				}
+			]
+		}				
+	]
+}
+        </noscript>
 
         <!-- Asset Pipeline JS Files. -->
         <script src='/assets/jquery.js' type='text/javascript'></script>

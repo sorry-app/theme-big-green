@@ -34,11 +34,6 @@
         {% endcss_asset_tag %}
     </head>
     <body ng-controller="PageCtrl">
-        <!-- Include Page Content. -->
-        <script id="apologies-data" type="application/json">
-            {{content}}
-        </script>
-
         <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
         {% raw %}
             <!-- Header Block For Large Status Message -->
@@ -128,6 +123,11 @@
                 <p class="powered-by">Powered By <a href="http://www.sorry.io">Sorry</a></p>
             </footer>
         {% endraw %}
+
+        <!-- Include Page Content. -->
+        <noscript id="apologies-data">
+            {{content}}
+        </noscript>
 
         <!-- Asset Pipeline JS Files. -->
         {% javascript_asset_tag global %}

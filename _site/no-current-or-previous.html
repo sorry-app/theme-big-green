@@ -28,14 +28,6 @@
 
     </head>
     <body ng-controller="PageCtrl">
-        <!-- Include Page Content. -->
-        <script id="apologies-data" type="application/json">
-            {
-	"name": "Sofas And Stuff",
-	"apologies": []
-}
-        </script>
-
         <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
         
             <!-- Header Block For Large Status Message -->
@@ -125,6 +117,14 @@
                 <p class="powered-by">Powered By <a href="http://www.sorry.io">Sorry</a></p>
             </footer>
         
+
+        <!-- Include Page Content. -->
+        <noscript id="apologies-data">
+            {
+	"name": "Sofas And Stuff",
+	"apologies": []
+}
+        </noscript>
 
         <!-- Asset Pipeline JS Files. -->
         <script src='/assets/jquery.js' type='text/javascript'></script>
