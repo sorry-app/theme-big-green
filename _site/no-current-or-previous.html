@@ -64,6 +64,8 @@
                                     </span>
                                     {{update.content}}
                                 </h3>
+
+                                <h3 class="no-updates" ng-hide="apology.updates.length">We have no further updates on this yet.</h3>
                             </article>
                         </div>
                     </div>
@@ -93,8 +95,6 @@
                             <time class="dt">{{update.created_at | date:'short'}}</time>
                             <span class="dd">{{update.content}}</span>
                         </li>
-
-                        <p class="no-updates" ng-hide="apology.updates.length">No further updates on this.</p>
                     </ul>
                 </article>
             </section>
