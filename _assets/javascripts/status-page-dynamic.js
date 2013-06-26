@@ -1,6 +1,3 @@
-// Initilize the Angular App.
-var myApp = angular.module('myApp', []);
-
 // Defined a controller for the page.
 var PageCtrl = ['$scope', '$filter', '$http', function($scope, $filter, $http) {
 	// Laod in the apologies to start with.
