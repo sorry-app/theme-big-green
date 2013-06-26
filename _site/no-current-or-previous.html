@@ -95,11 +95,11 @@
                     <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
                 </ol>                
 
-                <a href="#previous-apologies" class="see-below">&#65088;</a>
+                <a href="#previous-apologies" ng-show="previous_apologies().length > 0" class="see-below">&#65088;</a>
             </header>
 
             <!-- Block For Previously Solved. -->
-            <section id="previous-apologies" class="previous-apologies">
+            <section id="previous-apologies" class="previous-apologies" ng-show="previous_apologies().length > 0">
                 <!-- Loop over the collection of previous apologies, order date descending. -->
                 <article ng-repeat="apology in previous_apologies() | orderBy:'created_at':true" class="apology" id="apology_{apology.id}">
                     <h4>
