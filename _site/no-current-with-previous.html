@@ -46,7 +46,7 @@
                     <div ng-switch-when="true">
                         <div class="carousel-inner">
                             <!-- Loop over the collection of current apologies. -->
-                            <article ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology item" ng-class="{active : $first, item : true}">
+                            <article ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology item" ng-class="{active : $first}" id="apology_{{apology.id}}">
                                 <!-- Output the title for the apology. -->
                                 <h2>
                                     <!-- Output the date the apology was created, with live timer increment. -->
@@ -83,7 +83,7 @@
                     <!-- Ouput a buller for each -->
                     <!-- Add nav data to the apologies array index. -->
                     <!-- Apply an active state to the first in the queue for page load. -->
-                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
+                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first}"></li>
                 </ol>                
 
                 <a href="#previous-apologies" ng-show="previous_apologies().length > 0" class="see-below">&#65088;</a>
@@ -175,6 +175,7 @@
 
         <!-- Asset Pipeline JS Files. -->
         <script src='/assets/jquery.js' type='text/javascript'></script>
+<script src='/assets/jquery-ui.js' type='text/javascript'></script>
 <script src='/assets/bootstrap.js' type='text/javascript'></script>
 <script src='/assets/pusher.js' type='text/javascript'></script>
 <script src='/assets/moment.js' type='text/javascript'></script>

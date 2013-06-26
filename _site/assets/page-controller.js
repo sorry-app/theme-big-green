@@ -29,18 +29,37 @@
       }
       $scope.channel.bind("apology-updated", function(data) {
         return $scope.$apply(function() {
-          var found;
+          var carousel_index, element, found;
 
           found = $filter("filter")($scope.page.apologies, {
             id: data.id
           });
-          return $.extend(true, found[0], data);
+          element = $('#apology_' + data.id);
+          carousel_index = element.index();
+          $("#carousel").carousel(element.index());
+          element.effect("highlight", {}, "slow");
+          $.extend(true, found[0].updates, data.updates);
+          if (found[0].state !== data.state) {
+            return element.data('state-change-to', data.state);
+          }
         });
       });
       $scope.channel.bind("apology-created", function(data) {
         return $scope.$apply(function() {
           return $scope.page.apologies.push(data);
         });
+      });
+      $("#carousel").on('slid', function() {
+        var element, _i, _len, _ref, _results;
+
+        console.log('slid');
+        _ref = $('#carousel').find('.item');
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          element = _ref[_i];
+          _results.push(console.log(element));
+        }
+        return _results;
       });
       return $scope.$watch('current_apologies().length', function(newval, oldval) {
         if (oldval === 1 && newval === 2) {

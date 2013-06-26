@@ -1,0 +1,94 @@
+/* Commonly Used Layout Elements. */
+/* Default  Layout. */
+body, html {
+  height: 100%; }
+
+/* Header Block Layouts. */
+/* Vertical Centering Trick: http://css-tricks.com/centering-in-the-unknown/ */
+header {
+  height: 100%;
+  text-align: center; }
+  header h1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 60px;
+    margin: 0; }
+  header .current-status {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: left;
+    width: 99%; }
+  header a.see-below {
+    position: absolute;
+    display: block;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding: 10px 0 40px 0; }
+  header .carousel-indicators {
+    position: absolute;
+    padding: 15px 0;
+    top: 60px;
+    left: 60px; }
+  header article {
+    padding: 60px; }
+
+header:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  background-color: #FFF; }
+
+/* Core Sections. */
+section.previous-apologies {
+  padding: 60px; }
+  section.previous-apologies article {
+    padding-bottom: 60px; }
+
+/* Footer. */
+footer {
+  text-align: right;
+  padding: 60px; }
+
+/* Lists. */
+ul.updates > li {
+  margin: 1.4em 0; }
+
+ul.updates > li > time {
+  margin-right: 2em; }
+
+/* Mobile Styles. */
+@media (max-width: 767px) {
+  body {
+    padding-right: 0;
+    padding-left: 0; }
+
+  header:before {
+    display: none; }
+
+  header h1 {
+    position: static;
+    padding: 20px;
+    text-align: left;
+    line-height: 1.4em; }
+  header article {
+    padding: 20px; }
+  header .carousel-indicators {
+    position: static;
+    margin: 0 auto;
+    padding: 20px; }
+
+  ul.updates > li > time {
+    display: block;
+    margin-bottom: 1em; }
+
+  section.previous-apologies {
+    padding: 20px; }
+    section.previous-apologies article {
+      padding-bottom: 20px; }
+
+  footer {
+    text-align: left;
+    padding: 20px; } }

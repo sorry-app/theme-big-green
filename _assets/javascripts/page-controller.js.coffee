@@ -48,9 +48,26 @@
       # Get a filered array of open apologies.
       found = $filter("filter") $scope.page.apologies,
         id: data.id
-      
+
+      # Get the HTML element for this apology.
+      element = $('#apology_' + data.id)
+      # Calculate it's index from it's siblings.
+      carousel_index = element.index()
+
+      # Scroll the carousel around to this element.
+      $("#carousel").carousel element.index()
+
+      # highlight the element.
+      element.effect "highlight", {}, "slow"
+
       # Extend the element that we found.
-      $.extend true, found[0], data
+      $.extend true, found[0].updates, data.updates
+
+      # Check to see if a state change needs to be made.
+      if found[0].state != data.state
+        # We have a state change on our hands.
+        # Update the element with the pending state change.
+        element.data('state-change-to', data.state)
 
   # Bind for the apology created event.
   $scope.channel.bind "apology-created", (data) ->
@@ -58,6 +75,16 @@
     $scope.$apply ->
       # Append it to the scope collection.
       $scope.page.apologies.push data
+
+  # Bind the slide event on the carousel.
+  $("#carousel").on 'slid', ->
+    console.log 'slid'
+
+    for element in $('#carousel').find('.item')
+      console.log element
+      # An apology has been updated, we must update the model.
+      $scope.$apply ->
+          if element.data('state-change-to', data.state)
 
   # Watch for changes to the number of open apologies.
   $scope.$watch 'current_apologies().length', (newval, oldval) ->
