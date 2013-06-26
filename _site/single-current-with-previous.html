@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Define The Angular App -->
 <html lang="en" ng-app>
     <head>
         <meta charset="utf-8">
@@ -88,40 +89,56 @@
         
 
             <!-- Header Block For Large Status Message -->
+            <!-- Use the 'sorry' method to set the green/orange state. -->
             <header class="sorry-{{sorry()}} carousel slide" id="carousel">
+                <!-- Output the name of this status page. -->
                 <h1>{{page.name}} Status Page</h1>
 
+                <!-- Switch the status message based on the Sorry state. -->
                 <div class="current-status" ng-switch="sorry()">
+                    <!-- We have nothing to be sorry about, so all is well. -->
                     <div ng-switch-when="false">
                         <article>
                             <h2 id="status">All Is Well</h2>
                         </article>
                     </div>
+                    <!-- We have some apologies. -->
                     <div ng-switch-when="true">
                         <div class="carousel-inner">
+                            <!-- Loop over the collection of current apologies. -->
                             <article ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology item" ng-class="{active : $first, item : true}">
                                 <!-- Output the title for the apology. -->
                                 <h2>
+                                    <!-- Output the date the apology was created, with live timer increment. -->
                                     <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
 
+                                    <!-- Output the apology description. -->
                                     {{apology.description}}
                                 </h2>
 
+                                <!-- Loop over any updates we have for the apology, only displaying the last. -->
                                 <h3 ng-repeat="update in apology.updates | orderBy:'created_at':true | limitTo:1">
                                     <span>
                                         Last Updated 
+                                        <!-- Output the datetime for the update, with live timer incrememnt. -->
                                         <time class="live dt" data-stamp="{{update.created_at}}"></time>
                                     </span>
+                                    <!-- OUtput the text content for the update. -->
                                     {{update.content}}
                                 </h3>
 
+                                <!-- If we have no updates to display, show a message to this effect. -->
                                 <h3 class="no-updates" ng-hide="apology.updates.length">We have no further updates on this yet.</h3>
                             </article>
                         </div>
                     </div>
                 </div>
 
+                <!-- We need carousel navigation bullets, so loop over the collection of apologies. -->
                 <ol class="carousel-indicators" ng-show="current_apologies().length > 1">
+                    <!-- Ouput a buller for each -->
+                    <!-- Add nav data to the apologies array index. -->
+                    <!-- Apply an active state to the first in the queue for page load. -->
                     <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first, item : true}"></li>
                 </ol>                
 
@@ -130,19 +147,21 @@
 
             <!-- Block For Previously Solved. -->
             <section id="previous-apologies" class="previous-apologies">
+                <!-- Loop over the collection of previous apologies, order date descending. -->
                 <article ng-repeat="apology in previous_apologies() | orderBy:'created_at':true" class="apology" id="apology_{apology.id}">
-                    <!-- Output the title for the apology. -->
                     <h4>
+                        <!-- Output the date for the apology, with live timer increment. -->
                         <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
-
+                        <!-- Output the description of the apology. -->
                         {{apology.description}}
                     </h4>
 
                     <ul class="updates unstyled">
-                        <!-- Loop The Updates. -->
+                        <!-- Loop over the updates, showing all, in date order. -->
                         <li ng-repeat="update in apology.updates | orderBy:'created_at'">
-                            <!-- Output Update Details. -->
+                            <!-- Output the date for the update. -->
                             <time class="dt">{{update.created_at | date:'short'}}</time>
+                            <!-- Output the text content of the update. -->
                             <span class="dd">{{update.content}}</span>
                         </li>
                     </ul>
