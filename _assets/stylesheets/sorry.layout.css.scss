@@ -46,7 +46,11 @@ header {
 		left:$layout-gutter;
 	}
 
-	article {
+	.carousel-control {
+		display:none;
+	}
+
+	.apology {
 		padding:$layout-gutter;
 	}
 }

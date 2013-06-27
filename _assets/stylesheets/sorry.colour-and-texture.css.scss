@@ -22,8 +22,12 @@ header.sorry-false {
 
 /* Apology Blocks. */
 
-header article {
+header .apology {
 	background-color: $color-faded-white;
+}
+
+header .carousel {
+	position:inherit;
 }
 
 /* Previous Apologies Block. */

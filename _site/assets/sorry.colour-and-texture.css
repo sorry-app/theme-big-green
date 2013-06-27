@@ -10,8 +10,11 @@ header.sorry-false {
   background-color: #7ab800; }
 
 /* Apology Blocks. */
-header article {
+header .apology {
   background-color: rgba(255, 255, 255, 0.05); }
+
+header .carousel {
+  position: inherit; }
 
 /* Previous Apologies Block. */
 .previous-apologies {

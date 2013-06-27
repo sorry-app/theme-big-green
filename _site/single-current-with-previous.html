@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- Define The Angular App -->
-<html lang="en" ng-app>
+<html lang="en" ng-app="myModule">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
@@ -32,21 +32,21 @@
         
             <!-- Header Block For Large Status Message -->
             <!-- Use the 'sorry' method to set the green/orange state. -->
-            <header class="sorry-{{sorry()}} carousel slide" id="carousel">
+            <header class="sorry-{{sorry()}}">
                 <!-- Switch the status message based on the Sorry state. -->
                 <!-- Must be first element inside header to ensure vertical align set propoperly. -->
                 <div class="current-status" ng-switch="sorry()">
                     <!-- We have nothing to be sorry about, so all is well. -->
                     <div ng-switch-when="false">
-                        <article>
+                        <div class="apology">
                             <h2 id="status">All Is Well</h2>
-                        </article>
+                        </div>
                     </div>
                     <!-- We have some apologies. -->
                     <div ng-switch-when="true">
-                        <div class="carousel-inner">
+                        <carousel interval="interval">
                             <!-- Loop over the collection of current apologies. -->
-                            <article ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology item" ng-class="{active : $first}" id="apology_{{apology.id}}">
+                            <slide active="apology.active" ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology"  id="apology_{{apology.id}}">
                                 <!-- Output the title for the apology. -->
                                 <h2>
                                     <!-- Output the date the apology was created, with live timer increment. -->
@@ -69,22 +69,14 @@
 
                                 <!-- If we have no updates to display, show a message to this effect. -->
                                 <h3 class="no-updates" ng-hide="apology.updates.length">We have no further updates on this yet.</h3>
-                            </article>
-                        </div>
+                            </slide>
+                        </carousel>
                     </div>
                 </div>
 
                 <!-- Output the name of this status page. -->
                 <!-- Has to be lower in DOM than carousel to avoid breaking verticle align. -->
-                <h1>{{page.name}} Status Page</h1>
-
-                <!-- We need carousel navigation bullets, so loop over the collection of apologies. -->
-                <ol class="carousel-indicators" ng-show="current_apologies().length > 1">
-                    <!-- Ouput a buller for each -->
-                    <!-- Add nav data to the apologies array index. -->
-                    <!-- Apply an active state to the first in the queue for page load. -->
-                    <li ng-repeat="apology in current_apologies()" data-target="#carousel" data-slide-to="{{$index}}" ng-class="{active : $first}"></li>
-                </ol>                
+                <h1>{{page.name}} Status Page</h1>             
 
                 <a href="#previous-apologies" ng-show="previous_apologies().length > 0" class="see-below">&#65088;</a>
             </header>
@@ -188,11 +180,10 @@
 
         <!-- Asset Pipeline JS Files. -->
         <script src='/assets/jquery.js' type='text/javascript'></script>
-<script src='/assets/jquery-ui.js' type='text/javascript'></script>
-<script src='/assets/bootstrap.js' type='text/javascript'></script>
 <script src='/assets/pusher.js' type='text/javascript'></script>
-<script src='/assets/moment.js' type='text/javascript'></script>
 <script src='/assets/angular.min.js' type='text/javascript'></script>
+<script src='/assets/moment.js' type='text/javascript'></script>
+<script src='/assets/angular-carousel.js' type='text/javascript'></script>
 <script src='/assets/smooth-anchor.js' type='text/javascript'></script>
 <script src='/assets/page-controller.js' type='text/javascript'></script>
 <script src='/assets/status-page.js' type='text/javascript'></script>

@@ -31,7 +31,9 @@ header {
     padding: 15px 0;
     top: 60px;
     left: 60px; }
-  header article {
+  header .carousel-control {
+    display: none; }
+  header .apology {
     padding: 60px; }
 
 header:before {

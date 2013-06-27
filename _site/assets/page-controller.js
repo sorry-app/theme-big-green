@@ -1,6 +1,9 @@
 (function() {
+  angular.module("myModule", ["ui.bootstrap"]);
+
   this.PageCtrl = [
     "$scope", "$filter", function($scope, $filter) {
+      $scope.interval = 5000;
       $scope.page = JSON.parse($("#apologies-data").text());
       $scope.pusher = new Pusher("8d89d29aaf9f27452fc5");
       $scope.channel = $scope.pusher.subscribe("status-page.sorryapp.com");
@@ -21,37 +24,20 @@
           return true;
         }
       };
-      if ($scope.current_apologies().length > 1) {
-        $("#carousel").carousel({
-          interval: 5000,
-          pause: ""
-        });
-      }
       $scope.channel.bind("apology-updated", function(data) {
         return $scope.$apply(function() {
-          var element, found;
+          var found;
 
           found = $filter("filter")($scope.page.apologies, {
             id: data.id
           });
-          element = $('#apology_' + data.id);
-          if (element.hasClass('active' && found[0].state !== data.state)) {
-            $("#carousel").carousel('next');
-          }
           return $.extend(true, found[0], data);
         });
       });
-      $scope.channel.bind("apology-created", function(data) {
+      return $scope.channel.bind("apology-created", function(data) {
         return $scope.$apply(function() {
           return $scope.page.apologies.push(data);
         });
-      });
-      return $scope.$watch('current_apologies().length', function(newval, oldval) {
-        if (oldval === 1 && newval === 2) {
-          return $("#carousel").carousel('cycle');
-        } else if (oldval === 2 && newval === 1) {
-          return $("#carousel").carousel('pause');
-        }
       });
     }
   ];
