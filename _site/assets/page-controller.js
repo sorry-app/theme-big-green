@@ -5,8 +5,8 @@
     "$scope", "$filter", "$interval", function($scope, $filter, $interval) {
       $scope.interval = 5000;
       $scope.page = JSON.parse($("#apologies-data").text());
-      $scope.pusher = new Pusher("8d89d29aaf9f27452fc5");
-      $scope.channel = $scope.pusher.subscribe("status-page.sorryapp.com");
+      $scope.pusher = new Pusher($('body').data('pusher-key'));
+      $scope.channel = $scope.pusher.subscribe($('body').data('pusher-channel'));
       $scope.expire_previous_apologies = function() {
         var apology, date_closed, difference, index, _results;
 

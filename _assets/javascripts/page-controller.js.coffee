@@ -11,7 +11,7 @@ angular.module "myModule", ["ui.bootstrap", "interval"]
 
   # Bind to push updates.
   # create a pusher instance within the controller.
-  $scope.pusher = new Pusher()$('body').data('pusher-key')
+  $scope.pusher = new Pusher($('body').data('pusher-key'))
   # Subscribe to this pages unique chanel.
   $scope.channel = $scope.pusher.subscribe($('body').data('pusher-channel'))
 
