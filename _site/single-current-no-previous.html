@@ -84,7 +84,7 @@
             <!-- Block For Previously Solved. -->
             <section id="previous-apologies" class="previous-apologies" ng-show="previous_apologies().length > 0">
                 <!-- Loop over the collection of previous apologies, order date descending. -->
-                <article ng-repeat="apology in previous_apologies() | orderBy:'created_at':true" class="apology" id="apology_{apology.id}">
+                <article ng-repeat="apology in previous_apologies() | orderBy:'closed_at':true" class="apology" id="apology_{apology.id}">
                     <h4>
                         <!-- Output the date for the apology, with live timer increment. -->
                         <span>Started <time>{{apology.created_at | date:'short'}}</time></span>
