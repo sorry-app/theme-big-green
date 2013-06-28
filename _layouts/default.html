@@ -33,7 +33,7 @@
             - /_assets/stylesheets/sorry.interactions.css.scss
         {% endcss_asset_tag %}
     </head>
-    <body ng-controller="PageCtrl">
+    <body ng-controller="PageCtrl" data-pusher-key="8d89d29aaf9f27452fc5" data-pusher-channel="status-page.sorryapp.com">
         <!-- Have Jekyll Ignore All Liquid From Hereon In. -->
         {% raw %}
             <!-- Header Block For Large Status Message -->
@@ -131,6 +131,7 @@
             # Plugins
             - /_assets/javascripts/moment.js
             - /_assets/javascripts/angular-carousel.js
+            - /_assets/javascripts/angular-interval.js
             - /_assets/javascripts/smooth-anchor.js.coffee
 
             # Site Assets.

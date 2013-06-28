@@ -1,12 +1,30 @@
 (function() {
-  angular.module("myModule", ["ui.bootstrap"]);
+  angular.module("myModule", ["ui.bootstrap", "interval"]);
 
   this.PageCtrl = [
-    "$scope", "$filter", function($scope, $filter) {
+    "$scope", "$filter", "$interval", function($scope, $filter, $interval) {
       $scope.interval = 5000;
       $scope.page = JSON.parse($("#apologies-data").text());
       $scope.pusher = new Pusher("8d89d29aaf9f27452fc5");
       $scope.channel = $scope.pusher.subscribe("status-page.sorryapp.com");
+      $scope.expire_previous_apologies = function() {
+        var apology, date_closed, difference, index, _results;
+
+        index = $scope.page.apologies.length - 1;
+        _results = [];
+        while (index >= 0) {
+          apology = $scope.page.apologies[index];
+          if (apology.closed_at) {
+            date_closed = moment(apology.closed_at);
+            difference = date_closed.diff(moment(), 'days');
+            if (difference < -7) {
+              $scope.page.apologies.splice(index, 1);
+            }
+          }
+          _results.push(index--);
+        }
+        return _results;
+      };
       $scope.current_apologies = function() {
         return $filter("filter")($scope.page.apologies, {
           state: "open"
@@ -34,11 +52,12 @@
           return $.extend(true, found[0], data);
         });
       });
-      return $scope.channel.bind("apology-created", function(data) {
+      $scope.channel.bind("apology-created", function(data) {
         return $scope.$apply(function() {
           return $scope.page.apologies.push(data);
         });
       });
+      return $interval($scope.expire_previous_apologies, 5000);
     }
   ];
 
