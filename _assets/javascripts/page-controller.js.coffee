@@ -65,30 +65,14 @@ angular.module "myModule", ["ui.bootstrap", "interval"]
   # This method tells us whether the page is in appology state or not.
   $scope.sorry = ->
     # Cbeck the number of open apologies.
-    if $scope.current_apologies().length is 0
-      # We have none, so return success state.
-      return false
-    else
-      # We have some open apologies, so return error state.
-      return true
+    !!$scope.current_apologies().length
 
   # Bind for the apology updated event.
-  $scope.channel.bind "apology-updated", (data) ->
+  $scope.channel.bind "page-updated", (data) ->
     # An apology has been updated, we must update the model.
     $scope.$apply ->
       # Get a filered array of open apologies.
-      found = $filter("filter") $scope.page.apologies,
-        id: data.id
-
-      # Extend the element that we found.
-      $.extend true, found[0], data
-
-  # Bind for the apology created event.
-  $scope.channel.bind "apology-created", (data) ->
-    # A new apology has been created.
-    $scope.$apply ->
-      # Append it to the scope collection.
-      $scope.page.apologies.push data
+      $scope.page = data
 
   # Expiry any old apologies that need to go.
   # Do this on a 5 second interval.

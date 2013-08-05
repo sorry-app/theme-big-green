@@ -36,25 +36,11 @@
         });
       };
       $scope.sorry = function() {
-        if ($scope.current_apologies().length === 0) {
-          return false;
-        } else {
-          return true;
-        }
+        return !!$scope.current_apologies().length;
       };
-      $scope.channel.bind("apology-updated", function(data) {
+      $scope.channel.bind("page-updated", function(data) {
         return $scope.$apply(function() {
-          var found;
-
-          found = $filter("filter")($scope.page.apologies, {
-            id: data.id
-          });
-          return $.extend(true, found[0], data);
-        });
-      });
-      $scope.channel.bind("apology-created", function(data) {
-        return $scope.$apply(function() {
-          return $scope.page.apologies.push(data);
+          return $scope.page = data;
         });
       });
       return $interval($scope.expire_previous_apologies, 5000);
