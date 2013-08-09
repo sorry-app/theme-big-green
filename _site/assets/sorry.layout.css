@@ -11,7 +11,7 @@ header {
   header h1 {
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     padding: 60px;
     margin: 0; }
   header .current-status {
@@ -51,7 +51,7 @@ section.previous-apologies {
 
 /* Footer. */
 footer {
-  text-align: right;
+  text-align: left;
   padding: 60px; }
 
 /* Lists. */
@@ -72,25 +72,27 @@ ul.updates > li > time {
 
   header h1 {
     position: static;
-    padding: 20px;
+    padding: 40px;
     text-align: left;
     line-height: 1.4em; }
   header article {
-    padding: 20px; }
+    padding: 40px; }
+  header .apology {
+    padding: 40px; }
   header .carousel-indicators {
     position: static;
     margin: 0 auto;
-    padding: 20px; }
+    padding: 40px; }
 
   ul.updates > li > time {
     display: block;
     margin-bottom: 1em; }
 
   section.previous-apologies {
-    padding: 20px; }
+    padding: 40px; }
     section.previous-apologies article {
-      padding-bottom: 20px; }
+      padding-bottom: 40px; }
 
   footer {
     text-align: left;
-    padding: 20px; } }
+    padding: 40px; } }

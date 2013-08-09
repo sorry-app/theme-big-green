@@ -33,6 +33,10 @@
             <!-- Header Block For Large Status Message -->
             <!-- Use the 'sorry' method to set the green/orange state. -->
             <header class="sorry-{{sorry()}}">
+                <!-- Output the name of this status page. -->
+                <!-- Has to be lower in DOM than carousel to avoid breaking verticle align. -->
+                <h1>{{page.name}} Status Page</h1>
+
                 <!-- Switch the status message based on the Sorry state. -->
                 <!-- Must be first element inside header to ensure vertical align set propoperly. -->
                 <div class="current-status" ng-switch="sorry()">
@@ -72,11 +76,7 @@
                             </slide>
                         </carousel>
                     </div>
-                </div>
-
-                <!-- Output the name of this status page. -->
-                <!-- Has to be lower in DOM than carousel to avoid breaking verticle align. -->
-                <h1>{{page.name}} Status Page</h1>             
+                </div>            
 
                 <a href="#previous-apologies" ng-show="previous_apologies().length > 0" class="see-below">&#65088;</a>
             </header>

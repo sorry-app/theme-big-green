@@ -1,6 +1,6 @@
 /* Commonly Used Layout Elements. */
 $layout-gutter: 60px;
-$mobile-layout-gutter: 20px;
+$mobile-layout-gutter: 40px;
 
 /* Default  Layout. */
 
@@ -18,7 +18,7 @@ header {
 	h1 {
 		position:absolute;
 		top:0;
-		right:0;
+		left:0;
 		padding:$layout-gutter;
 		margin:0;
 	}
@@ -76,7 +76,7 @@ section.previous-apologies {
 /* Footer. */
 
 footer {
-	text-align:right;
+	text-align:left;
 	padding:$layout-gutter;
 }
 
@@ -111,6 +111,10 @@ ul.updates > li > time {
 		}
 
 		article {
+			padding:$mobile-layout-gutter;
+		}
+
+		.apology {
 			padding:$mobile-layout-gutter;
 		}
 
