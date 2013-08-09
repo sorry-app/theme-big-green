@@ -57,3 +57,8 @@ a.see-below {
 
 a.see-below:hover {
   text-decoration: none; }
+
+/* Mobile Styles. */
+@media (max-width: 767px) {
+  header.sorry-true h2 {
+    font-size: 2em; } }
