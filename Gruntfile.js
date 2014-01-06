@@ -34,6 +34,7 @@ module.exports = function(grunt) {
         separator: ';',
       },
       dist: {
+        // List these files explicitly to ensure dependancies are loaded in the right order.
         src: ['src/javascripts/jquery.js', 
               'src/javascripts/pusher.js', 
               'src/javascripts/angular.min.js',
