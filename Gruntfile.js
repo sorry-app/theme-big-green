@@ -10,6 +10,12 @@ module.exports = function(grunt) {
       all: ['Gruntfile.js', 'src/**/*.js']
     },
 
+    // Watch and instant rebuild.
+    watch: {
+      files: ['index.html', 'src/**/*'],
+      tasks: ['default'],
+    },
+
     // Compile Coffescripts.
     coffee: {
       glob_to_multiple: {
