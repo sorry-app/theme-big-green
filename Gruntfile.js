@@ -8,6 +8,37 @@ module.exports = function(grunt) {
     // Javascript validation.
     jshint: {
       all: ['Gruntfile.js', 'src/**/*.js']
+    },
+
+    // Compile Coffescripts.
+    coffee: {
+      glob_to_multiple: {
+        expand: true,
+        flatten: true,
+        cwd: 'src/javascripts',
+        src: ['*.coffee'],
+        dest: 'tmp/javascripts/',
+        ext: '.js'
+      }
+    },
+
+    // Concatenate the JS assets.
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['src/javascripts/jquery.js', 
+              'src/javascripts/pusher.js', 
+              'src/javascripts/angular.min.js',
+              'src/javascripts/moment.js',
+              'src/javascripts/angular-carousel.js',
+              'src/javascripts/angular-interval.js',
+              'tmp/javascripts/smooth-anchor.js',
+              'tmp/javascripts/page-controller.js',
+              'tmp/javascripts/status-page.js'],
+        dest: 'dist/<%= pkg.name %>.js',
+      },
     },    
   });
 
@@ -25,6 +56,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('default', ['coffee', 'concat']);
 
 };
