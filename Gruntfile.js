@@ -14,6 +14,15 @@ module.exports = function(grunt) {
       }
     },
 
+    // LESS CSS Compilation.
+    less: {
+      production: { 
+        files: {
+          "dist/stylesheets/status-page.css": "src/stylesheets/main.less",
+        }
+      }
+    },
+
     // Javascript validation.
     jshint: {
       all: ['Gruntfile.js', 'src/**/*.js']
@@ -33,19 +42,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Compile SASS Files.
-    sass: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'src/stylesheets',
-          src: ['*.scss'],
-          dest: 'tmp/stylesheets/',
-          ext: '.css'
-        }]
-      }
-    },
-
     // Compile Coffescripts.
     coffee: {
       glob_to_multiple: {
@@ -60,13 +56,21 @@ module.exports = function(grunt) {
 
     // Concatenate the JS assets.
     concat: {
-      css: {
-        src: ['src/stylesheets/*.css', 'tmp/stylesheets/*.css'],
-        dest: 'dist/<%= pkg.name %>.css'
-      },
       js: {
         // List these files explicitly to ensure dependancies are loaded in the right order.
-        src: ['src/javascripts/jquery.js', 
+        src: ['src/javascripts/jquery.js',
+              'src/javascripts/vendor/bootstrap/transition.js',
+              'src/javascripts/vendor/bootstrap/alert.js',
+              'src/javascripts/vendor/bootstrap/button.js',
+              'src/javascripts/vendor/bootstrap/carousel.js',
+              'src/javascripts/vendor/bootstrap/collapse.js',
+              'src/javascripts/vendor/bootstrap/dropdown.js',
+              'src/javascripts/vendor/bootstrap/modal.js',
+              'src/javascripts/vendor/bootstrap/tooltip.js',
+              'src/javascripts/vendor/bootstrap/popover.js',
+              'src/javascripts/vendor/bootstrap/scrollspy.js',
+              'src/javascripts/vendor/bootstrap/tab.js',
+              'src/javascripts/vendor/bootstrap/affix.js',
               'src/javascripts/pusher.js', 
               'src/javascripts/angular.min.js',
               'src/javascripts/moment.js',
@@ -77,13 +81,13 @@ module.exports = function(grunt) {
               'tmp/javascripts/socket.js',
               'tmp/javascripts/page-controller.js',
               'tmp/javascripts/status-page.js'],
-        dest: 'dist/<%= pkg.name %>.js',
+        dest: 'dist/javascripts/<%= pkg.name %>.js',
       },
     },    
   });
 
-  // SASS Compilation.
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  // LESS Compilation.
+  grunt.loadNpmTasks('grunt-contrib-less');
   // Coffeescript Compilation.
   grunt.loadNpmTasks('grunt-contrib-coffee');
   // Load the plugin that validates the JS markup.
@@ -98,6 +102,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffee', 'sass', 'concat']);
+  grunt.registerTask('default', ['coffee', 'less', 'concat']);
 
 };
