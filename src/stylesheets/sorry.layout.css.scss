@@ -1,0 +1,145 @@
+/* Commonly Used Layout Elements. */
+$layout-gutter: 60px;
+$mobile-layout-gutter: 40px;
+
+/* Default  Layout. */
+
+body, html {
+	height:100%;
+}
+
+/* Header Block Layouts. */
+/* Vertical Centering Trick: http://css-tricks.com/centering-in-the-unknown/ */
+
+header {
+	height:100%;
+	text-align: center;
+
+	h1 {
+		position:absolute;
+		top:0;
+		left:0;
+		padding:$layout-gutter;
+		margin:0;
+	}
+
+	.current-status {
+		display: inline-block;
+		vertical-align: middle;
+		text-align:left;
+		width:99%;
+	}
+
+	a.see-below {
+		position:absolute;
+		display:block;
+		bottom:0;
+		text-align:center;
+		width:100%;
+		padding:10px 0 40px 0;
+	}
+
+	.carousel-indicators {
+		position:absolute;
+		padding:15px 0;
+		top:$layout-gutter;
+		left:$layout-gutter;
+	}
+
+	.carousel-control {
+		display:none;
+	}
+
+	.apology {
+		padding:$layout-gutter;
+	}
+}
+
+header:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  background-color:#FFF;
+}
+
+/* Core Sections. */
+
+section.previous-apologies {
+	padding:$layout-gutter;
+
+	article {
+		padding-bottom:$layout-gutter;
+	}
+}
+
+/* Footer. */
+
+footer {
+	text-align:left;
+	padding:$layout-gutter;
+}
+
+/* Lists. */
+
+ul.updates > li {
+	margin:1.4em 0;
+}
+
+ul.updates > li > time {
+	margin-right:2em;
+}
+
+/* Mobile Styles. */
+
+@media (max-width: 767px) {
+	body {
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	header:before {
+	  display:none;	
+	}
+
+	header {
+		h1 {
+			position:static;
+			padding:$mobile-layout-gutter;
+			text-align:left;
+			line-height:1.4em;
+		}
+
+		article {
+			padding:$mobile-layout-gutter;
+		}
+
+		.apology {
+			padding:$mobile-layout-gutter;
+		}
+
+		.carousel-indicators {
+			position:static;
+			margin:0 auto;
+			padding:$mobile-layout-gutter;
+		}			
+	}
+
+	ul.updates > li > time {
+		display:block;
+		margin-bottom:1em;
+	}
+
+	section.previous-apologies {
+		padding:$mobile-layout-gutter;
+
+		article {
+			padding-bottom:$mobile-layout-gutter;
+		}
+	}
+
+	footer {
+		text-align:left;
+		padding:$mobile-layout-gutter;
+	}	
+}

@@ -1,0 +1,47 @@
+/* Color Pallet */
+$color-status-green: #7AB800;
+$color-status-orange: #FF7B29;
+$color-white: #FFFFFF;
+$color-faded-white: rgba(255, 255, 255, 0.05);
+$color-faded-black: rgba(0, 0, 0, 0.05);
+$color-grey: #666;
+
+/* Header Box. */
+
+header {
+	color: $color-white !important;
+}
+
+header.sorry-true {
+	background-color: $color-status-orange;
+}
+
+header.sorry-false {
+	background-color: $color-status-green;
+}
+
+/* Apology Blocks. */
+
+header .apology {
+	background-color: $color-faded-white;
+}
+
+header .carousel {
+	position:inherit;
+}
+
+/* Previous Apologies Block. */
+
+.previous-apologies {
+	color: $color-grey !important;
+}
+
+/* Links. */
+
+a.see-below {
+	color: $color-white;
+}
+
+a.see-below:hover {
+	background-color: $color-faded-black;
+}
