@@ -5,6 +5,15 @@ module.exports = function(grunt) {
     // Load in the package information.
     pkg: grunt.file.readJSON('package.json'),
 
+    // Development web server.
+    connect: {
+      server: {
+        options : {
+          keepalive: true,
+        }
+      }
+    },
+
     // Javascript validation.
     jshint: {
       all: ['Gruntfile.js', 'src/**/*.js']
@@ -14,6 +23,19 @@ module.exports = function(grunt) {
     watch: {
       files: ['index.html', 'src/**/*'],
       tasks: ['default'],
+    },
+
+    // Compile SASS Files.
+    sass: {
+      dist: {
+        files: [{
+          expand: true,
+          cwd: 'src/stylesheets',
+          src: ['*.scss'],
+          dest: 'tmp/stylesheets/',
+          ext: '.css'
+        }]
+      }
     },
 
     // Compile Coffescripts.
@@ -30,10 +52,11 @@ module.exports = function(grunt) {
 
     // Concatenate the JS assets.
     concat: {
-      options: {
-        separator: ';',
+      css: {
+        src: ['src/stylesheets/*.css', 'tmp/stylesheets/*.css'],
+        dest: 'dist/<%= pkg.name %>.css'
       },
-      dist: {
+      js: {
         // List these files explicitly to ensure dependancies are loaded in the right order.
         src: ['src/javascripts/jquery.js', 
               'src/javascripts/pusher.js', 
@@ -61,8 +84,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   // qUnit test runner.
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  // Local webserver.
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffee', 'concat']);
+  grunt.registerTask('default', ['coffee', 'sass', 'concat']);
 
 };
