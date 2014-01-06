@@ -9,7 +9,7 @@
   # TODO: We need to deal with failure of this request.
   $http(
     method: "GET"
-    url: "http://status.sorryapp.com/?format=json"
+    url: "http://test-company-6182980.sorryapp.com/?format=json"
   ).success (data, status, headers, config) ->
 
     # Set the result in to the controller.

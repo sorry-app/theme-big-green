@@ -80,7 +80,6 @@ module.exports = function(grunt) {
               'src/javascripts/vendor/pusher/pusher.js', 
               // Angular MVC.
               'src/javascripts/vendor/angular/angular.min.js',
-              'src/javascripts/vendor/angular/angular-carousel.js',
               'src/javascripts/vendor/angular/angular-interval.js',
               // Page specific JS.
               'tmp/javascripts/application.js',

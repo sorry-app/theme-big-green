@@ -40,33 +40,31 @@
                 </div>
                 <!-- We have some apologies. -->
                 <div ng-switch-when="true">
-                    <carousel interval="interval">
-                        <!-- Loop over the collection of current apologies. -->
-                        <slide active="apology.active" ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology"  id="apology_{{apology.id}}">
-                            <!-- Output the title for the apology. -->
-                            <h2>
-                                <!-- Output the date the apology was created, with live timer increment. -->
-                                <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
+                    <!-- Loop over the collection of current apologies. -->
+                    <div active="apology.active" ng-repeat="apology in current_apologies() | orderBy:'created_at':true" class="apology"  id="apology_{{apology.id}}">
+                        <!-- Output the title for the apology. -->
+                        <h2>
+                            <!-- Output the date the apology was created, with live timer increment. -->
+                            <span>Started <time class="live" data-stamp="{{apology.created_at}}"></time></span>
 
-                                <!-- Output the apology description. -->
-                                {{apology.description}}
-                            </h2>
+                            <!-- Output the apology description. -->
+                            {{apology.description}}
+                        </h2>
 
-                            <!-- Loop over any updates we have for the apology, only displaying the last. -->
-                            <h3 ng-repeat="update in apology.updates | orderBy:'created_at':true | limitTo:1">
-                                <span>
-                                    Last Updated 
-                                    <!-- Output the datetime for the update, with live timer incrememnt. -->
-                                    <time class="live dt" data-stamp="{{update.created_at}}"></time>
-                                </span>
-                                <!-- OUtput the text content for the update. -->
-                                {{update.content}}
-                            </h3>
+                        <!-- Loop over any updates we have for the apology, only displaying the last. -->
+                        <h3 ng-repeat="update in apology.updates | orderBy:'created_at':true | limitTo:1">
+                            <span>
+                                Last Updated 
+                                <!-- Output the datetime for the update, with live timer incrememnt. -->
+                                <time class="live dt" data-stamp="{{update.created_at}}"></time>
+                            </span>
+                            <!-- OUtput the text content for the update. -->
+                            {{update.content}}
+                        </h3>
 
-                            <!-- If we have no updates to display, show a message to this effect. -->
-                            <h3 class="no-updates" ng-hide="apology.updates.length">We have no further updates on this yet.</h3>
-                        </slide>
-                    </carousel>
+                        <!-- If we have no updates to display, show a message to this effect. -->
+                        <h3 class="no-updates" ng-hide="apology.updates.length">We have no further updates on this yet.</h3>
+                    </div>
                 </div>
             </div>            
 

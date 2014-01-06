@@ -5988,15 +5988,6 @@ header a.see-below {
   width: 100%;
   padding: 10px 0 40px 0;
 }
-header .carousel-indicators {
-  position: absolute;
-  padding: 15px 0;
-  top: 60px;
-  left: 60px;
-}
-header .carousel-control {
-  display: none;
-}
 header .apology {
   padding: 60px;
 }
@@ -6045,11 +6036,6 @@ ul.updates > li > time {
     padding: 40px;
   }
   header .apology {
-    padding: 40px;
-  }
-  header .carousel-indicators {
-    position: static;
-    margin: 0 auto;
     padding: 40px;
   }
   ul.updates > li > time {
@@ -6137,9 +6123,6 @@ a.see-below:hover {
   header.sorry-true h2 {
     font-size: 2em;
   }
-}
-.carousel-indicators > li:hover {
-  cursor: pointer;
 }
 /* Color Pallet */
 /* Header Box. */
