@@ -47,8 +47,8 @@ module.exports = function(grunt) {
       glob_to_multiple: {
         expand: true,
         flatten: true,
-        cwd: 'src/javascripts',
-        src: ['*.coffee'],
+        cwd: 'src/javascripts/',
+        src: ['**/*.coffee'],
         dest: 'tmp/javascripts/',
         ext: '.js'
       }
@@ -58,7 +58,12 @@ module.exports = function(grunt) {
     concat: {
       js: {
         // List these files explicitly to ensure dependancies are loaded in the right order.
-        src: ['src/javascripts/jquery.js',
+        // TODO: I would love to abstract this dependancy tree out into another config file.
+        src: [
+              // jQuery & Plugins.
+              'src/javascripts/vendor/jquery/jquery.js',
+              'src/javascripts/vendor/jquery/moment.js',
+              // Bootstrap Plugins.
               'src/javascripts/vendor/bootstrap/transition.js',
               'src/javascripts/vendor/bootstrap/alert.js',
               'src/javascripts/vendor/bootstrap/button.js',
@@ -71,13 +76,15 @@ module.exports = function(grunt) {
               'src/javascripts/vendor/bootstrap/scrollspy.js',
               'src/javascripts/vendor/bootstrap/tab.js',
               'src/javascripts/vendor/bootstrap/affix.js',
-              'src/javascripts/pusher.js', 
-              'src/javascripts/angular.min.js',
-              'src/javascripts/moment.js',
-              'src/javascripts/angular-carousel.js',
-              'src/javascripts/angular-interval.js',
-              'tmp/javascripts/smooth-anchor.js',
+              // Pusher real-time.
+              'src/javascripts/vendor/pusher/pusher.js', 
+              // Angular MVC.
+              'src/javascripts/vendor/angular/angular.min.js',
+              'src/javascripts/vendor/angular/angular-carousel.js',
+              'src/javascripts/vendor/angular/angular-interval.js',
+              // Page specific JS.
               'tmp/javascripts/application.js',
+              'tmp/javascripts/smooth-anchor.js',
               'tmp/javascripts/socket.js',
               'tmp/javascripts/page-controller.js',
               'tmp/javascripts/status-page.js'],
