@@ -65,6 +65,8 @@ module.exports = function(grunt) {
               'src/javascripts/angular-carousel.js',
               'src/javascripts/angular-interval.js',
               'tmp/javascripts/smooth-anchor.js',
+              'tmp/javascripts/application.js',
+              'tmp/javascripts/socket.js',
               'tmp/javascripts/page-controller.js',
               'tmp/javascripts/status-page.js'],
         dest: 'dist/<%= pkg.name %>.js',

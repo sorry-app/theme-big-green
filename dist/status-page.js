@@ -10725,50 +10725,119 @@ angular.module('interval', []).provider('$interval', function $intervalProvider(
 }).call(this);
 
 (function() {
-  angular.module("myModule", ["ui.bootstrap", "interval"]);
+  this.app = angular.module("status-page", ["ui.bootstrap", "interval"]);
 
-  this.PageCtrl = [
-    "$scope", "$filter", "$interval", function($scope, $filter, $interval) {
-      $scope.interval = 5000;
-      $scope.page = JSON.parse($("#apologies-data").text());
-      $scope.pusher = new Pusher($('body').data('pusher-key'));
-      $scope.channel = $scope.pusher.subscribe($('body').data('pusher-channel'));
-      $scope.expire_previous_apologies = function() {
-        var apology, date_closed, difference, index, _results;
-        index = $scope.page.apologies.length - 1;
-        _results = [];
-        while (index >= 0) {
-          apology = $scope.page.apologies[index];
-          if (apology.closed_at) {
-            date_closed = moment(apology.closed_at);
-            difference = date_closed.diff(moment(), 'days');
-            if (difference < -7) {
-              $scope.page.apologies.splice(index, 1);
-            }
-          }
-          _results.push(index--);
+}).call(this);
+
+(function() {
+  app.factory("socket", [
+    "$rootScope", function($rootScope) {
+      var channel, pusher;
+      pusher = new Pusher($("body").data("pusher-key"));
+      channel = pusher.subscribe($("body").data("pusher-channel"));
+      return {
+        bind: function(eventName, callback) {
+          return channel.bind(eventName, function() {
+            var args;
+            args = arguments;
+            return $rootScope.$apply(function() {
+              return callback.apply(channel, args);
+            });
+          });
         }
-        return _results;
       };
-      $scope.current_apologies = function() {
-        return $filter("filter")($scope.page.apologies, {
-          state: "open"
+    }
+  ]);
+
+}).call(this);
+
+(function() {
+  this.PageCtrl = [
+    "$scope", "$filter", "$interval", "$http", "socket", function($scope, $filter, $interval, $http, socket) {
+      $scope.interval = 5000;
+      return $http({
+        method: "GET",
+        url: "http://status.sorryapp.com/?format=json"
+      }).success(function(data, status, headers, config) {
+        $scope.page = data;
+        $scope.expire_previous_apologies = function() {
+          var apology, date_closed, difference, index, _results;
+          index = $scope.page.apologies.length - 1;
+          _results = [];
+          while (index >= 0) {
+            apology = $scope.page.apologies[index];
+            if (apology.closed_at) {
+              date_closed = moment(apology.closed_at);
+              difference = date_closed.diff(moment(), 'days');
+              if (difference < -7) {
+                $scope.page.apologies.splice(index, 1);
+              }
+            }
+            _results.push(index--);
+          }
+          return _results;
+        };
+        $scope.current_apologies = function() {
+          return $filter("filter")($scope.page.apologies, {
+            state: "open"
+          });
+        };
+        $scope.previous_apologies = function() {
+          return $filter("filter")($scope.page.apologies, {
+            state: "closed"
+          });
+        };
+        $scope.sorry = function() {
+          return !!$scope.current_apologies().length;
+        };
+        $interval($scope.expire_previous_apologies, 5000);
+        socket.bind("apology-created", function(data) {
+          var found;
+          found = $filter("filter")($scope.page.apologies, {
+            id: data.id
+          });
+          if (found.length === 0) {
+            return $scope.page.apologies.push(data);
+          }
         });
-      };
-      $scope.previous_apologies = function() {
-        return $filter("filter")($scope.page.apologies, {
-          state: "closed"
+        socket.bind("apology-updated", function(data) {
+          var found;
+          found = $filter("filter")($scope.page.apologies, {
+            id: data.id
+          });
+          return $.extend(true, found[0], data);
         });
-      };
-      $scope.sorry = function() {
-        return !!$scope.current_apologies().length;
-      };
-      $scope.channel.bind("page-updated", function(data) {
-        return $scope.$apply(function() {
-          return $scope.page = data;
+        socket.bind("apology-deleted", function(data) {
+          /*
+          # TODO: These nested loops are messy and we should refactor them.
+          # - The loops are inefficient.
+          # - The code is too verbose.
+          # - The loops don't break so continue even after result is found.
+          */
+
+          return angular.forEach($scope.page.apologies, function(apology, index) {
+            if (apology.id === data.id) {
+              return $scope.page.apologies.splice(index, 1);
+            }
+          });
+        });
+        return socket.bind("update-deleted", function(data) {
+          /*
+          # TODO: These nested loops are messy and we should refactor them.
+          # - The loops are inefficient.
+          # - The code is too verbose.
+          # - The loops don't break so continue even after result is found.
+          */
+
+          return angular.forEach($scope.page.apologies, function(apology, a_index) {
+            return angular.forEach(apology.updates, function(update, u_index) {
+              if (update.id === data.id) {
+                return apology.updates.splice(u_index, 1);
+              }
+            });
+          });
         });
       });
-      return $interval($scope.expire_previous_apologies, 5000);
     }
   ];
 
