@@ -25,6 +25,14 @@ module.exports = function(grunt) {
       tasks: ['default'],
     },
 
+    // Release & Deployment Tasks.
+    release: {
+      options: {
+        npmtag: false, // Don't deploy to NPM as we don't want to release like that.
+        tagName: 'status-page-<%= version %>' // TODO: We can't use a variable for the package name.
+      }
+    },
+
     // Compile SASS Files.
     sass: {
       dist: {
