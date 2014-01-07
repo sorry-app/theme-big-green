@@ -43,6 +43,11 @@ module.exports = function(grunt) {
       all: ['Gruntfile.js']
     },
 
+    // Coffeescript validation.
+    coffeelint: {
+      app: ['src/javascripts/**/*.coffee']
+    },
+
     // Watch and instant rebuild.
     watch: {
       files: ['index.html', 'src/**/*'],
@@ -113,6 +118,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee');
   // Load the plugin that validates the JS markup.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-coffeelint');
   // Watcher for rebuilding when files changes.
   grunt.loadNpmTasks('grunt-contrib-watch');
   // Plugin for concatenating files.
@@ -123,6 +129,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'coffee', 'less', 'concat']);
+  grunt.registerTask('default', ['jshint', 'coffeelint', 'coffee', 'less', 'concat']);
 
 };

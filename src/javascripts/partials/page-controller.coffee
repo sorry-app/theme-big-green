@@ -1,8 +1,9 @@
 # Defined a controller for the page.
-@PageCtrl = ["$scope", "$filter", "$interval", "$http", "socket", ($scope, $filter, $interval, $http, socket) ->
+@PageCtrl = ["$scope", "$filter", "$interval", "$http", "socket", \
+  ($scope, $filter, $interval, $http, socket) ->
 
   # Set the interval for the scroller.
-  $scope.interval = 5000;
+  $scope.interval = 5000
 
   # Load the data in to the page from the service.
   # TODO: Could we abstract this in to a $resource request?

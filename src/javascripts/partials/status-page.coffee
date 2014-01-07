@@ -1,6 +1,6 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+# This script updates the times for the page.
+
+# Wait for jQuery to be ready.
 jQuery ->
   # Define a method for updating timestamps on the page.
   updateTimes = ->

@@ -12318,92 +12318,89 @@ angular.module('interval', []).provider('$interval', function $intervalProvider(
 
 (function() {
   this.PageCtrl = [
-    "$scope", "$filter", "$interval", "$http", "socket", function($scope, $filter, $interval, $http, socket) {
-      $scope.interval = 5000;
-      return $http({
-        method: "GET",
-        url: "http://test-company-6182980.sorryapp.com/?format=json"
-      }).success(function(data, status, headers, config) {
-        $scope.page = data;
-        $scope.expire_previous_apologies = function() {
-          var apology, date_closed, difference, index, _results;
-          index = $scope.page.apologies.length - 1;
-          _results = [];
-          while (index >= 0) {
-            apology = $scope.page.apologies[index];
-            if (apology.closed_at) {
-              date_closed = moment(apology.closed_at);
-              difference = date_closed.diff(moment(), 'days');
-              if (difference < -7) {
-                $scope.page.apologies.splice(index, 1);
-              }
+    "$scope", "$filter", "$interval", "$http", "socket", function($scope, $filter, $interval, $http, socket) {}, $scope.interval = 5000, $http({
+      method: "GET",
+      url: "http://test-company-6182980.sorryapp.com/?format=json"
+    }).success(function(data, status, headers, config) {
+      $scope.page = data;
+      $scope.expire_previous_apologies = function() {
+        var apology, date_closed, difference, index, _results;
+        index = $scope.page.apologies.length - 1;
+        _results = [];
+        while (index >= 0) {
+          apology = $scope.page.apologies[index];
+          if (apology.closed_at) {
+            date_closed = moment(apology.closed_at);
+            difference = date_closed.diff(moment(), 'days');
+            if (difference < -7) {
+              $scope.page.apologies.splice(index, 1);
             }
-            _results.push(index--);
           }
-          return _results;
-        };
-        $scope.current_apologies = function() {
-          return $filter("filter")($scope.page.apologies, {
-            state: "open"
-          });
-        };
-        $scope.previous_apologies = function() {
-          return $filter("filter")($scope.page.apologies, {
-            state: "closed"
-          });
-        };
-        $scope.sorry = function() {
-          return !!$scope.current_apologies().length;
-        };
-        $interval($scope.expire_previous_apologies, 5000);
-        socket.bind("apology-created", function(data) {
-          var found;
-          found = $filter("filter")($scope.page.apologies, {
-            id: data.id
-          });
-          if (found.length === 0) {
-            return $scope.page.apologies.push(data);
-          }
+          _results.push(index--);
+        }
+        return _results;
+      };
+      $scope.current_apologies = function() {
+        return $filter("filter")($scope.page.apologies, {
+          state: "open"
         });
-        socket.bind("apology-updated", function(data) {
-          var found;
-          found = $filter("filter")($scope.page.apologies, {
-            id: data.id
-          });
-          return $.extend(true, found[0], data);
+      };
+      $scope.previous_apologies = function() {
+        return $filter("filter")($scope.page.apologies, {
+          state: "closed"
         });
-        socket.bind("apology-deleted", function(data) {
-          /*
-          # TODO: These nested loops are messy and we should refactor them.
-          # - The loops are inefficient.
-          # - The code is too verbose.
-          # - The loops don't break so continue even after result is found.
-          */
+      };
+      $scope.sorry = function() {
+        return !!$scope.current_apologies().length;
+      };
+      $interval($scope.expire_previous_apologies, 5000);
+      socket.bind("apology-created", function(data) {
+        var found;
+        found = $filter("filter")($scope.page.apologies, {
+          id: data.id
+        });
+        if (found.length === 0) {
+          return $scope.page.apologies.push(data);
+        }
+      });
+      socket.bind("apology-updated", function(data) {
+        var found;
+        found = $filter("filter")($scope.page.apologies, {
+          id: data.id
+        });
+        return $.extend(true, found[0], data);
+      });
+      socket.bind("apology-deleted", function(data) {
+        /*
+        # TODO: These nested loops are messy and we should refactor them.
+        # - The loops are inefficient.
+        # - The code is too verbose.
+        # - The loops don't break so continue even after result is found.
+        */
 
-          return angular.forEach($scope.page.apologies, function(apology, index) {
-            if (apology.id === data.id) {
-              return $scope.page.apologies.splice(index, 1);
+        return angular.forEach($scope.page.apologies, function(apology, index) {
+          if (apology.id === data.id) {
+            return $scope.page.apologies.splice(index, 1);
+          }
+        });
+      });
+      return socket.bind("update-deleted", function(data) {
+        /*
+        # TODO: These nested loops are messy and we should refactor them.
+        # - The loops are inefficient.
+        # - The code is too verbose.
+        # - The loops don't break so continue even after result is found.
+        */
+
+        return angular.forEach($scope.page.apologies, function(apology, a_index) {
+          return angular.forEach(apology.updates, function(update, u_index) {
+            if (update.id === data.id) {
+              return apology.updates.splice(u_index, 1);
             }
-          });
-        });
-        return socket.bind("update-deleted", function(data) {
-          /*
-          # TODO: These nested loops are messy and we should refactor them.
-          # - The loops are inefficient.
-          # - The code is too verbose.
-          # - The loops don't break so continue even after result is found.
-          */
-
-          return angular.forEach($scope.page.apologies, function(apology, a_index) {
-            return angular.forEach(apology.updates, function(update, u_index) {
-              if (update.id === data.id) {
-                return apology.updates.splice(u_index, 1);
-              }
-            });
           });
         });
       });
-    }
+    })
   ];
 
 }).call(this);
