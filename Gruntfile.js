@@ -103,7 +103,6 @@ module.exports = function(grunt) {
               'src/javascripts/vendor/angular/angular-interval.js',
               // Page specific JS.
               'tmp/javascripts/application.js',
-              'tmp/javascripts/smooth-anchor.js',
               'tmp/javascripts/socket.js',
               'tmp/javascripts/page-controller.js',
               'tmp/javascripts/status-page.js'],
