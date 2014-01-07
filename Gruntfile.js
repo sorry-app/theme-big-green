@@ -83,19 +83,6 @@ module.exports = function(grunt) {
               // jQuery & Plugins.
               'src/javascripts/vendor/jquery/jquery.js',
               'src/javascripts/vendor/jquery/moment.js',
-              // Bootstrap Plugins.
-              'src/javascripts/vendor/bootstrap/transition.js',
-              'src/javascripts/vendor/bootstrap/alert.js',
-              'src/javascripts/vendor/bootstrap/button.js',
-              'src/javascripts/vendor/bootstrap/carousel.js',
-              'src/javascripts/vendor/bootstrap/collapse.js',
-              'src/javascripts/vendor/bootstrap/dropdown.js',
-              'src/javascripts/vendor/bootstrap/modal.js',
-              'src/javascripts/vendor/bootstrap/tooltip.js',
-              'src/javascripts/vendor/bootstrap/popover.js',
-              'src/javascripts/vendor/bootstrap/scrollspy.js',
-              'src/javascripts/vendor/bootstrap/tab.js',
-              'src/javascripts/vendor/bootstrap/affix.js',
               // Pusher real-time.
               'src/javascripts/vendor/pusher/pusher.js',
               // Angular MVC.
