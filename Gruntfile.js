@@ -16,16 +16,31 @@ module.exports = function(grunt) {
 
     // LESS CSS Compilation.
     less: {
-      production: { 
+      production: {
         files: {
-          "dist/stylesheets/status-page.css": "src/stylesheets/main.less",
+          'dist/stylesheets/status-page.css': 'src/stylesheets/main.less',
         }
       }
     },
 
     // Javascript validation.
     jshint: {
-      all: ['Gruntfile.js', 'src/**/*.js']
+      // These are best practices taken as best practices from Bootstrap.
+      options: {
+        'asi'      : true,
+        'boss'     : true,
+        'browser'  : true,
+        'curly'    : false,
+        'debug'    : true,
+        'devel'    : true,
+        'eqeqeq'   : false,
+        'eqnull'   : true,
+        'expr'     : true,
+        'laxbreak' : true,
+        'quotmark' : 'single',
+        'validthis': true
+      },
+      all: ['Gruntfile.js']
     },
 
     // Watch and instant rebuild.
@@ -77,7 +92,7 @@ module.exports = function(grunt) {
               'src/javascripts/vendor/bootstrap/tab.js',
               'src/javascripts/vendor/bootstrap/affix.js',
               // Pusher real-time.
-              'src/javascripts/vendor/pusher/pusher.js', 
+              'src/javascripts/vendor/pusher/pusher.js',
               // Angular MVC.
               'src/javascripts/vendor/angular/angular.min.js',
               'src/javascripts/vendor/angular/angular-interval.js',
@@ -89,7 +104,7 @@ module.exports = function(grunt) {
               'tmp/javascripts/status-page.js'],
         dest: 'dist/javascripts/<%= pkg.name %>.js',
       },
-    },    
+    },
   });
 
   // LESS Compilation.
@@ -108,6 +123,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
-  grunt.registerTask('default', ['coffee', 'less', 'concat']);
+  grunt.registerTask('default', ['jshint', 'coffee', 'less', 'concat']);
 
 };
