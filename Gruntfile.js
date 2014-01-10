@@ -23,6 +23,42 @@ module.exports = function(grunt) {
       }
     },
 
+    // Configuration to be run (and then tested).
+    liquid: {
+      options: {
+        // TODO: It we be cool to offer variants of this in their own JSON files.
+        page: {
+          name: 'Skeleton Status Page',
+          current_apologies: [{
+              created_at: '2013-11-29 00:00:00 -0500',
+              closed_at: '',
+              state: 'closed',
+              description: 'This is an example apology description.',
+              updates: [{
+                created_at: '2013-11-29 00:00:00 -0500',
+                content: 'This is an update to an apology.'
+              }]
+          }],
+          previous_apologies: [{
+              created_at: '2013-11-29 00:00:00 -0500',
+              closed_at: '2013-11-29 00:00:00 -0500',
+              state: 'closed',
+              description: 'This is an example apology description.',
+              updates: []
+          }]
+        }
+      },
+      pages: {
+        files: [{
+          expand: true, 
+          flatten: true,
+          src: 'index.liquid',
+          dest: 'dist', 
+          ext: '.html'
+        }]
+      }
+    },    
+
     // Javascript validation.
     jshint: {
       // These are best practices taken as best practices from Bootstrap.
@@ -43,11 +79,6 @@ module.exports = function(grunt) {
       all: ['Gruntfile.js']
     },
 
-    // Coffeescript validation.
-    coffeelint: {
-      app: ['src/javascripts/**/*.coffee']
-    },
-
     // Watch and instant rebuild.
     watch: {
       files: ['index.html', 'src/**/*'],
@@ -62,18 +93,6 @@ module.exports = function(grunt) {
       }
     },
 
-    // Compile Coffescripts.
-    coffee: {
-      glob_to_multiple: {
-        expand: true,
-        flatten: true,
-        cwd: 'src/javascripts/',
-        src: ['**/*.coffee'],
-        dest: 'tmp/javascripts/',
-        ext: '.js'
-      }
-    },
-
     // Concatenate the JS assets.
     concat: {
       js: {
@@ -82,17 +101,7 @@ module.exports = function(grunt) {
         src: [
               // jQuery & Plugins.
               'src/javascripts/vendor/jquery/jquery.js',
-              'src/javascripts/vendor/jquery/moment.js',
-              // Pusher real-time.
-              'src/javascripts/vendor/pusher/pusher.js',
-              // Angular MVC.
-              'src/javascripts/vendor/angular/angular.min.js',
-              'src/javascripts/vendor/angular/angular-interval.js',
-              // Page specific JS.
-              'tmp/javascripts/application.js',
-              'tmp/javascripts/socket.js',
-              'tmp/javascripts/page-controller.js',
-              'tmp/javascripts/status-page.js'],
+              'src/javascripts/vendor/jquery/moment.js'],
         dest: 'dist/javascripts/<%= pkg.name %>.js',
       },
     },
@@ -100,19 +109,18 @@ module.exports = function(grunt) {
 
   // LESS Compilation.
   grunt.loadNpmTasks('grunt-contrib-less');
-  // Coffeescript Compilation.
-  grunt.loadNpmTasks('grunt-contrib-coffee');
   // Load the plugin that validates the JS markup.
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-coffeelint');
   // Watcher for rebuilding when files changes.
   grunt.loadNpmTasks('grunt-contrib-watch');
   // Plugin for concatenating files.
   grunt.loadNpmTasks('grunt-contrib-concat');
   // Local webserver.
   grunt.loadNpmTasks('grunt-contrib-connect');
+  // Liquid template compiler.
+  grunt.loadNpmTasks('grunt-liquid');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'coffeelint', 'coffee', 'less', 'concat']);
+  grunt.registerTask('default', ['jshint', 'less', 'concat', 'liquid']);
 
 };
