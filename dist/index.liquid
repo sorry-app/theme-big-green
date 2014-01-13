@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Define The Angular App -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,7 +8,7 @@
         <meta name="robots" content="noindex, nofollow" />
 
         <!-- Dynamicly set the title using the helper methoe. -->
-        <title>Skeleton Status Page</title>
+        <title>{{ page.name }}</title>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,7 +18,7 @@
         <![endif]-->
 
         <!-- Include CSS Assets. -->
-        <link rel="stylesheet" href="stylesheets/status-page.css" />
+        <link rel="stylesheet" href="{{ 'stylesheets/status-page.css' | asset_url }}" />
     </head>
     <body>
         <!-- Header Block For Large Status Message -->
@@ -27,15 +26,15 @@
         <header>
             <!-- Output the name of this status page. -->
             <!-- Has to be lower in DOM than carousel to avoid breaking verticle align. -->
-            <h1>Skeleton Status Page</h1>
+            <h1>{{ page.name }}</h1>
 
             <!-- Switch the status message based on the Sorry state. -->
             <!-- Must be first element inside header to ensure vertical align set propoperly. -->
             <div class="current-status">
-                
+                {% if page.current_apologies.length %}
                     <!-- We have some apologies. -->
                     <div>
-                        
+                        {% for apology in page.current_apologies %}
                             <!-- Loop over the collection of current apologies. -->
                             <div class="apology">
                                 <!-- Output the title for the apology. -->
@@ -43,70 +42,88 @@
                                     <!-- Output the date the apology was created, with live timer increment. -->
                                     <span>Started 
                                         <time class="live">
-                                            2013-11-29 00:00:00 -0500
+                                            {{ apology.created_at | date: '%B %d, %Y' }}
                                         </time>
                                     </span>
 
                                     <!-- Output the apology description. -->
-                                    This is an example apology description.
+                                    {{ apology.description }}
                                 </h2>
 
-                                
+                                {% if apology.updates.length %}
                                     <!-- Loop over any updates we have for the apology, only displaying the last. -->
-                                    
+                                    {% for update in apology.updates %}
                                         <h3>
                                             <span>
                                                 Last Updated 
                                                 <!-- Output the datetime for the update, with live timer incrememnt. -->
                                                 <time class="live dt">
-                                                    2013-11-29 00:00:00 -0500
+                                                    {{ update.created_at | date: '%B %d, %Y' }}
                                                 </time>
                                             </span>
 
                                             <!-- OUtput the text content for the update. -->
-                                            This is an update to an apology.
+                                            {{ update.content }}
                                         </h3>
-                                    
-                                
+                                    {% endfor %}
+                                {% else %}
+                                    <!-- If we have no updates to display, show a message to this effect. -->
+                                    <h3 class="no-updates">We have no further updates on this yet.</h3>
+                                {% endif %}
                             </div>
-                        
+                        {% endfor %}
                     </div>
-                
+                {% else %}
+                    <!-- We have nothing to be sorry about, so all is well. -->
+                    <div>
+                        <div class="apology">
+                            <h2 id="status">All Is Well</h2>
+                        </div>
+                    </div>
+                {% endif %}
             </div>            
 
-            
+            {% if page.previous_apologies.length %}
                 <a href="#previous-apologies" class="see-below">&#65088;</a>
-            
+            {% endif %}
         </header>
 
-        
+        {% if page.previous_apologies.length %}
             <!-- Block For Previously Solved. -->
             <section id="previous-apologies" class="previous-apologies">
-                
+                {% for apology in page.previous_apologies %}
                     <!-- Loop over the collection of previous apologies, order date descending. -->
                     <article class="apology">
                         <h4>
                             <!-- Output the date for the apology, with live timer increment. -->
                             <span>Started 
                                 <time>
-                                    2013-11-29 00:00:00 -0500
+                                    {{ apology.created_at | date: '%B %d, %Y' }}
                                 </time>
                             </span>
                             
                             <!-- Output the description of the apology. -->
-                            This is an example apology description.
+                            {{ apology.description }}
                         </h4>
 
                         <ul class="updates unstyled">
-                            
+                            {% for update in apology.updates %}
+                                <!-- Loop over the updates, showing all, in date order. -->
+                                <li>
+                                    <!-- Output the date for the update. -->
+                                    <time class="dt">{{ update.created_at | date: '%B %d, %Y' }}</time>
+                                    <!-- Output the text content of the update. -->
+                                    <span class="dd">{{ update.content }}</span>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </article>
-                
+                {% endfor %}
             </section>
-        
+        {% endif %}
 
         <!-- Include the required assets. -->
         <!-- Frameworks. -->
-        <script src="javascripts/status-page.js"></script>
+        <script src="{{ 'javascripts/status-page.js' | asset_url }}"></script>
     </body>
 </html>

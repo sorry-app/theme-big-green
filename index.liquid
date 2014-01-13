@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Define The Angular App -->
 <html>
     <head>
         <meta charset="utf-8">
@@ -19,7 +18,7 @@
         <![endif]-->
 
         <!-- Include CSS Assets. -->
-        <link rel="stylesheet" href="stylesheets/status-page.css" />
+        <link rel="stylesheet" href="{{ 'stylesheets/status-page.css' | asset_url }}" />
     </head>
     <body>
         <!-- Header Block For Large Status Message -->
@@ -125,6 +124,6 @@
 
         <!-- Include the required assets. -->
         <!-- Frameworks. -->
-        <script src="javascripts/status-page.js"></script>
+        <script src="{{ 'javascripts/status-page.js' | asset_url }}"></script>
     </body>
 </html>

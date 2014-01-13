@@ -18,7 +18,7 @@ module.exports = function(grunt) {
     less: {
       production: {
         files: {
-          'dist/stylesheets/status-page.css': 'src/stylesheets/main.less',
+          'build/stylesheets/status-page.css': 'src/stylesheets/main.less',
         }
       }
     },
@@ -53,11 +53,22 @@ module.exports = function(grunt) {
           expand: true, 
           flatten: true,
           src: 'index.liquid',
-          dest: 'dist', 
+          dest: 'build/', 
           ext: '.html'
         }]
       }
     },    
+
+    // Copy liquid file into the dist folder.
+    copy: {
+      main: {
+        files: [
+          { src: 'index.liquid', dest: 'dist/'},
+          { expand: true, flatten: true, src: 'build/stylesheets/*', dest: 'dist/stylesheets/'},
+          { expand: true, flatten: true, src: 'build/javascripts/*', dest: 'dist/javascripts/'}
+        ]
+      },
+    },
 
     // Javascript validation.
     jshint: {
@@ -102,7 +113,7 @@ module.exports = function(grunt) {
               // jQuery & Plugins.
               'src/javascripts/vendor/jquery/jquery.js',
               'src/javascripts/vendor/jquery/moment.js'],
-        dest: 'dist/javascripts/<%= pkg.name %>.js',
+        dest: 'build/javascripts/<%= pkg.name %>.js',
       },
     },
   });
@@ -119,8 +130,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   // Liquid template compiler.
   grunt.loadNpmTasks('grunt-liquid');
+  // Copy files around.
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'less', 'concat', 'liquid']);
+  grunt.registerTask('default', ['jshint', 'less', 'concat', 'liquid', 'copy']);
 
 };
