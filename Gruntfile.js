@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true, 
           flatten: true,
-          src: 'index.liquid',
+          src: 'src/index.liquid',
           dest: 'build/', 
           ext: '.html'
         }]
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
-          { src: 'index.liquid', dest: 'dist/'},
+          { expand: true, flatten: true, src: 'src/index.liquid', dest: 'dist/'},
           { expand: true, flatten: true, src: 'build/stylesheets/*', dest: 'dist/stylesheets/'},
           { expand: true, flatten: true, src: 'build/javascripts/*', dest: 'dist/javascripts/'}
         ]
