@@ -47,7 +47,7 @@
                                 <span class="block-time">Started 
                                     <time>
                                         {{ apology.created_at | time_ago_in_words }}
-                                    </time>
+                                    </time> ago.
                                 </span>
 
                                 <!-- Output the apology description. -->
@@ -62,7 +62,7 @@
                                             Last Updated 
                                             <!-- Output the datetime for the update, with live timer incrememnt. -->
                                             <time>
-                                                {{ update.created_at | time_ago_in_words }}
+                                                {{ update.created_at | time_ago_in_words }} ago.
                                             </time>
                                         </span>
 
@@ -114,7 +114,7 @@
                                 <!-- Loop over the updates, showing all, in date order. -->
                                 {% for update in apology.updates %}
                                     <!-- Output the date for the update. -->
-                                    <dt class="text-muted">{{ update.created_at | date: '%B %d, %Y' }}</dt>
+                                    <dt class="text-muted">{{ update.created_at | distance_of_time_in_words: apology.created_at, update.created_at }} in.</dt>
                                     <!-- Output the text content of the update. -->
                                     <dd>{{ update.content }}</dd>
                                 {% endfor %}
