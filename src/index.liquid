@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Refresh the page every few seconds. -->
-        <meta http-equiv="refresh" content="5" />
+        <meta http-equiv="refresh" content="20" />
 
         <!-- We don't want these pages indexed by Google until end of BETA. -->
         <meta name="robots" content="noindex, nofollow" />
@@ -97,7 +97,7 @@
                 <div class="container">
                     <!-- Loop over the collection of previous apologies, order date descending. -->
                     {% for apology in page.previous_apologies %}
-                        <article class="apology">
+                        <article class="apology previous-apology">
                             <h3>
                                 <!-- Output the date for the apology, with live timer increment. -->
                                 <span class="block-time">Started 
