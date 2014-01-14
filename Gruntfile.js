@@ -28,7 +28,7 @@ module.exports = function(grunt) {
       options: {
         // TODO: It we be cool to offer variants of this in their own JSON files.
         page: {
-          state: 'apologise',
+          state: 'warning',
           name: 'Skeleton Status Page',
           current_apologies: [{
               created_at: '2013-11-29 00:00:00 -0500',
@@ -45,7 +45,13 @@ module.exports = function(grunt) {
               closed_at: '2013-11-29 00:00:00 -0500',
               state: 'closed',
               description: 'This is an example apology description.',
-              updates: []
+              updates: [{
+                created_at: '2013-11-29 00:00:00 -0500',
+                content: 'This is an update to an apology.'
+              }, {
+                created_at: '2013-11-29 00:00:00 -0500',
+                content: 'This is an update to an apology.'
+              }]
           }]
         }
       },

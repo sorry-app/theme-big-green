@@ -1,0 +1,44 @@
+/* Base Type. */
+
+html, body {
+	font-weight: @font-weight-base;
+}
+
+/* Links. */
+
+a.see-below {
+	line-height:2em;
+	display:block;
+	text-align:center;
+	color:#FFF;
+	padding:30px 0;
+}
+
+a.see-below:hover {
+	text-decoration: none; // Remove the underline effect.
+	background-color: rgba(0, 0, 0, 0.03); // Highlight the bar with a darker tint.
+}
+
+/* Description Lists */
+
+dt {
+	font-weight:inherit;
+}
+
+dl {
+	margin-bottom: @line-height-computed * 1.5;
+}
+
+dt,
+dd {
+	line-height: @line-height-base * 1.5;
+	font-size:16px;
+}
+
+/* Timestamps */
+
+.block-time {
+	font-size:0.75em;
+	display:block;
+	opacity:0.8; // TODO: Switch for a CSS3 mixin.
+}
