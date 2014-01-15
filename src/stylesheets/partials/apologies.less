@@ -1,23 +1,41 @@
 .apology {
-	padding:30px 0;
 	background-color: rgba(255, 255, 255, 0.05);
+	padding-bottom:@grid-verticle-gutter-width;
+}
+
+.apology:first-child {
+	padding-top:@grid-verticle-gutter-width;
 }
 
 .previous-apology {
-	border-left:1px solid #EFEFEF;
-	padding-left:40px;
-	position:relative;
+	border-bottom:1px solid #EFEFEF;
 }
 
-.previous-apology:before {
-	content: ' ';
-	font-size:100px;
-	display:block;
-	position:absolute;
-	top:58px;
-	left:-8px;
-	width:16px;
-	height:16px;
-	border-radius:50%;
-	background-color:#EFEFEF;
+@media (min-width: @grid-float-breakpoint) {
+	.previous-apology-list {
+		border-left:1px solid #EFEFEF;
+		padding-left:@grid-verticle-gutter-width;	
+	}
+
+	.apology-list {
+		padding-top:@grid-verticle-gutter-width;
+		padding-bottom:@grid-verticle-gutter-width;
+	}
+
+	.previous-apology {
+		position:relative;
+		border-bottom:none;
+	}
+
+	.previous-apology:before {
+		content: ' ';
+		font-size:100px;
+		display:block;
+		position:absolute;
+		left:-(@grid-verticle-gutter-width + 8);
+		width:16px;
+		height:16px;
+		border-radius:50%;
+		background-color:#EFEFEF;
+	}
 }

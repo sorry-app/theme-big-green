@@ -39,6 +39,15 @@ module.exports = function(grunt) {
                 created_at: '2013-11-29 00:00:00 -0500',
                 content: 'This is an update to an apology.'
               }]
+          }, {
+              created_at: '2013-11-29 00:00:00 -0500',
+              closed_at: '',
+              state: 'closed',
+              description: 'This is an example apology description.',
+              updates: [{
+                created_at: '2013-11-29 00:00:00 -0500',
+                content: 'This is an update to an apology.'
+              }]
           }],
           previous_apologies: [{
               created_at: '2013-11-29 00:00:00 -0500',
