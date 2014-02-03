@@ -27,13 +27,9 @@ module.exports = function(grunt) {
     liquid: {
       options: grunt.file.readJSON("fixtures/status-page.json"),
       pages: {
-        files: [{
-          expand: true, 
-          flatten: true,
-          src: "src/index.liquid",
-          dest: "build/", 
-          ext: ".html"
-        }]
+        files: [
+          { src: "src/index.liquid", dest: "build/index.html" }
+        ]
       }
     },    
 
