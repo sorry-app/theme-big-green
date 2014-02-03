@@ -23,14 +23,23 @@ module.exports = function(grunt) {
       }
     },
 
-    // Configuration to be run (and then tested).
+    // Liquid compilataion tasks
+    // If you have your own custom scenarios or situations you wish to
+    // test and develop for add fixtures into the fixtures folder and then
+    // add test compilation here.
     liquid: {
-      options: grunt.file.readJSON("fixtures/status-page.json"),
-      pages: {
-        files: [
-          { src: "src/index.liquid", dest: "build/index.html" }
-        ]
-      }
+        success: {
+          options: grunt.file.readJSON("fixtures/ok.json"),
+          files: [
+            { src: "src/index.liquid", dest: "build/ok.html" }
+          ]
+        },
+        warning: {
+          options: grunt.file.readJSON("fixtures/warning.json"),
+          files: [
+            { src: "src/index.liquid", dest: "build/warning.html" }
+          ]
+        }
     },    
 
     // Copy liquid file into the dist folder.
