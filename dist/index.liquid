@@ -25,76 +25,78 @@
         <link rel="stylesheet" href="{{ 'stylesheets/status-page.css' | asset_url }}" />
     </head>
     <body>
-        <!-- Header Block For Large Status Messages -->
-        <header class="page-title state-{{ page.state }}">
-            <div class="container">
-                <!-- Output the name of this status page. -->
-                <h1>{{ page.name }}</h1>
+        <header class="current-state state-{{ page.state }}">
+            <!-- Header Block For Large Status Messages -->
+            <div class="page-title">
+                <div class="container">
+                    <!-- Output the name of this status page. -->
+                    <h1>{{ page.name }}</h1>
+                </div>
             </div>
-        </header>
 
-        <section class="current-state state-{{ page.state }}">
-            <!-- Display current apologies if we have any. -->
-            {% if page.current_apologies.length %}
-                <!-- We have some apologies. -->
-                <div class="apology-list">
-                    <!-- Loop over the collection of current apologies. -->
-                    {% for apology in page.current_apologies %}
-                        <div class="status-notice apology">
-                            <div class="container">
-                                <!-- Output the title for the apology. -->
-                                <h2>
-                                    <!-- Output the date the apology was created, with live timer increment. -->
-                                    <span class="block-time">Started 
-                                        <time>
-                                            {{ apology.created_at | time_ago_in_words }}
-                                        </time> ago.
-                                    </span>
+            <section>
+                <!-- Display current apologies if we have any. -->
+                {% if page.current_apologies.length %}
+                    <!-- We have some apologies. -->
+                    <div class="apology-list">
+                        <!-- Loop over the collection of current apologies. -->
+                        {% for apology in page.current_apologies %}
+                            <div class="status-notice apology">
+                                <div class="container">
+                                    <!-- Output the title for the apology. -->
+                                    <h2>
+                                        <!-- Output the date the apology was created, with live timer increment. -->
+                                        <span class="block-time">Started 
+                                            <time>
+                                                {{ apology.created_at | time_ago_in_words }}
+                                            </time> ago.
+                                        </span>
 
-                                    <!-- Output the apology description. -->
-                                    {{ apology.description }}
-                                </h2>
+                                        <!-- Output the apology description. -->
+                                        {{ apology.description }}
+                                    </h2>
 
-                                {% if apology.updates.length %}
-                                    <!-- Loop over any updates we have for the apology, only displaying the last. -->
-                                    {% for update in apology.updates %}
-                                        <p class="update">
-                                            <span class="block-time">
-                                                Last Updated 
-                                                <!-- Output the datetime for the update, with live timer incrememnt. -->
-                                                <time>
-                                                    {{ update.created_at | time_ago_in_words }} ago.
-                                                </time>
-                                            </span>
+                                    {% if apology.updates.length %}
+                                        <!-- Loop over any updates we have for the apology, only displaying the last. -->
+                                        {% for update in apology.updates %}
+                                            <p class="update">
+                                                <span class="block-time">
+                                                    Last Updated 
+                                                    <!-- Output the datetime for the update, with live timer incrememnt. -->
+                                                    <time>
+                                                        {{ update.created_at | time_ago_in_words }} ago.
+                                                    </time>
+                                                </span>
 
-                                            <!-- OUtput the text content for the update. -->
-                                            {{ update.content }}
-                                        </p>
-                                    {% endfor %}
-                                {% else %}
-                                    <!-- If we have no updates to display, show a message to this effect. -->
-                                    <p class="no-updates">We have no further updates on this yet.</p>
-                                {% endif %}
+                                                <!-- OUtput the text content for the update. -->
+                                                {{ update.content }}
+                                            </p>
+                                        {% endfor %}
+                                    {% else %}
+                                        <!-- If we have no updates to display, show a message to this effect. -->
+                                        <p class="no-updates">We have no further updates on this yet.</p>
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% else %}
-                <div class="status-notice">
-                    <div class="container">
-                        <!-- No current apologies found -->
-                        <!-- We have nothing to be sorry about, so all is well. -->
-                        <h2>All Is Well</h2>
+                        {% endfor %}
                     </div>
-                </div>
-            {% endif %}
+                {% else %}
+                    <div class="status-notice">
+                        <div class="container">
+                            <!-- No current apologies found -->
+                            <!-- We have nothing to be sorry about, so all is well. -->
+                            <h2>All Is Well</h2>
+                        </div>
+                    </div>
+                {% endif %}
 
-            <!-- Check if we have any previous apologies to display. -->
-            {% if page.previous_apologies.length %}
-                <!-- Anchor link down to previous apologies. -->
-                <a href="#previous-apologies" class="see-below">&#65088;</a>
-            {% endif %}            
-        </section>
+                <!-- Check if we have any previous apologies to display. -->
+                {% if page.previous_apologies.length %}
+                    <!-- Anchor link down to previous apologies. -->
+                    <a href="#previous-apologies" class="see-below">&#65088;</a>
+                {% endif %}            
+            </section>
+        </header>
 
         <!-- Check if we have any previous apologies to display. -->
         {% if page.previous_apologies.length %}

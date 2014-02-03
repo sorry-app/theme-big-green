@@ -6007,6 +6007,13 @@ dd {
 .state-ok {
   background-color: #7ab800;
 }
+.current-state {
+  min-height: 100%;
+}
+html,
+body {
+  height: 100%;
+}
 .status-notice {
   padding-bottom: 50px;
   background-color: rgba(255, 255, 255, 0.05);
