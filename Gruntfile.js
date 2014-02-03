@@ -27,6 +27,7 @@ module.exports = function(grunt) {
     // If you have your own custom scenarios or situations you wish to
     // test and develop for add fixtures into the fixtures folder and then
     // add test compilation here.
+    // TODO: Build a custom task which lops over fixtures, so new fixtures added will be picked up.
     liquid: {
         success: {
           options: grunt.file.readJSON("fixtures/ok.json"),

@@ -6007,11 +6007,11 @@ dd {
 .state-ok {
   background-color: #7ab800;
 }
-.apology {
-  background-color: rgba(255, 255, 255, 0.05);
+.status-notice {
   padding-bottom: 50px;
+  background-color: rgba(255, 255, 255, 0.05);
 }
-.apology:first-child {
+.status-notice:first-child {
   padding-top: 50px;
 }
 .previous-apology {

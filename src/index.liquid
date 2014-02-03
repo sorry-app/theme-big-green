@@ -40,7 +40,7 @@
                 <div class="apology-list">
                     <!-- Loop over the collection of current apologies. -->
                     {% for apology in page.current_apologies %}
-                        <div class="apology">
+                        <div class="status-notice apology">
                             <div class="container">
                                 <!-- Output the title for the apology. -->
                                 <h2>
@@ -80,9 +80,13 @@
                     {% endfor %}
                 </div>
             {% else %}
-                <!-- No current apologies found -->
-                <!-- We have nothing to be sorry about, so all is well. -->
-                <h2>All Is Well</h2>
+                <div class="status-notice">
+                    <div class="container">
+                        <!-- No current apologies found -->
+                        <!-- We have nothing to be sorry about, so all is well. -->
+                        <h2>All Is Well</h2>
+                    </div>
+                </div>
             {% endif %}
 
             <!-- Check if we have any previous apologies to display. -->
@@ -102,7 +106,7 @@
 
                         <!-- Loop over the collection of previous apologies, order date descending. -->
                         {% for apology in page.previous_apologies %}
-                            <article class="apology previous-apology">
+                            <article class="status-notice apology previous-apology">
                                 <h4>
                                     <!-- Output the date for the apology, with live timer increment. -->
                                     <span class="block-time">Started 
