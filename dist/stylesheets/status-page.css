@@ -6024,6 +6024,15 @@ body {
 .previous-apology {
   border-bottom: 1px solid #EFEFEF;
 }
+.current-state {
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
+}
+.status-notices {
+  width: 100%;
+}
 @media (min-width: 768px) {
   .previous-apology-list {
     border-left: 1px solid #EFEFEF;
