@@ -14,29 +14,25 @@
 	margin-top:@grid-verticle-gutter-width;
 }
 
-@media (min-width: @grid-float-breakpoint) {
-	.previous-apology-list {
-		padding-top:@grid-verticle-gutter-width;
-		padding-bottom:@grid-verticle-gutter-width;
-		border-left:1px solid #EFEFEF;
-		padding-left:@grid-verticle-gutter-width;	
-	}
+.previous-apology-list {
+	border-left:1px solid #EFEFEF;
+	padding:@grid-verticle-gutter-width (@grid-verticle-gutter-width / 2);	
+}
 
-	.previous-apology {
-		position:relative;
-		border-bottom:none;
-	}
+.previous-apology {
+	position:relative;
+	border-bottom:none;
+}
 
-	.previous-apology:before {
-		content: ' ';
-		font-size:100px;
-		display:block;
-		position:absolute;
-		top:4px;
-		left:-(@grid-verticle-gutter-width + 8);
-		width:16px;
-		height:16px;
-		border-radius:50%;
-		background-color:#EFEFEF;
-	}
+.previous-apology:before {
+	content: ' ';
+	font-size:100px;
+	display:block;
+	position:absolute;
+	top:4px;
+	left:-((@grid-verticle-gutter-width / 2)+ 8);
+	width:16px;
+	height:16px;
+	border-radius:50%;
+	background-color:#EFEFEF;
 }

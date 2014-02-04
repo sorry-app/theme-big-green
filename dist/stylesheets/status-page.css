@@ -6040,27 +6040,23 @@ dd {
 .apology {
   margin-top: 50px;
 }
-@media (min-width: 768px) {
-  .previous-apology-list {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    border-left: 1px solid #EFEFEF;
-    padding-left: 50px;
-  }
-  .previous-apology {
-    position: relative;
-    border-bottom: none;
-  }
-  .previous-apology:before {
-    content: ' ';
-    font-size: 100px;
-    display: block;
-    position: absolute;
-    top: 4px;
-    left: -58px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background-color: #EFEFEF;
-  }
+.previous-apology-list {
+  border-left: 1px solid #EFEFEF;
+  padding: 50px 25px;
+}
+.previous-apology {
+  position: relative;
+  border-bottom: none;
+}
+.previous-apology:before {
+  content: ' ';
+  font-size: 100px;
+  display: block;
+  position: absolute;
+  top: 4px;
+  left: -33px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #EFEFEF;
 }
