@@ -2,10 +2,6 @@
 	background-color: rgba(255, 255, 255, 0.05);
 }
 
-.previous-apology {
-	border-bottom:1px solid #EFEFEF;
-}
-
 .apology:first-child {
 	margin-top:0;
 }
@@ -15,24 +11,33 @@
 }
 
 .previous-apology-list {
-	border-left:1px solid #EFEFEF;
 	padding:@grid-verticle-gutter-width (@grid-verticle-gutter-width / 2);	
 }
 
-.previous-apology {
-	position:relative;
-	border-bottom:none;
-}
+// Formatting on larger screens.
+@media (min-width: @screen-sm-min) {
 
-.previous-apology:before {
-	content: ' ';
-	font-size:100px;
-	display:block;
-	position:absolute;
-	top:4px;
-	left:-((@grid-verticle-gutter-width / 2)+ 8);
-	width:16px;
-	height:16px;
-	border-radius:50%;
-	background-color:#EFEFEF;
+	.previous-apology-list {
+		border-left:1px solid #EFEFEF; // Add a border to the left, to give a timeline effect.
+		padding:(@grid-verticle-gutter-width * 2) @grid-verticle-gutter-width; // Double the padding on larger screens.
+	}
+
+	.previous-apology {
+		position:relative;
+	}
+
+	// Round grey icons to give the timeline effect
+	.previous-apology:before {
+		content: ' ';
+		font-size:100px;
+		display:block;
+		position:absolute;
+		top:4px;
+		left:-(@grid-verticle-gutter-width+ 8);
+		width:16px;
+		height:16px;
+		border-radius:50%;
+		background-color:#EFEFEF;
+	}
+
 }
