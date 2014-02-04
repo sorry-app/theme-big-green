@@ -5967,10 +5967,13 @@ header {
   min-height: 100%;
 }
 header .page-title,
-header .see-below,
-header .status-notices {
+header .status-notices,
+header .fold-nav {
   width: 100%;
   padding: 25px;
+}
+header .fold-nav {
+  padding-bottom: 0;
 }
 header .status-notices {
   padding: 50px 25px;
@@ -6002,6 +6005,7 @@ a.see-below:hover {
   background-color: rgba(0, 0, 0, 0.03);
   opacity: 1;
   color: #FFF;
+  border-radius: 10px;
 }
 /* Description Lists */
 dt {

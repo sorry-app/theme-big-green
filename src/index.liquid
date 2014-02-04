@@ -88,14 +88,18 @@
                 {% endif %}         
             </section>
 
-            <!-- Check if we have any previous apologies to display. -->
-            {% if page.previous_apologies.length %}
-                <!-- Anchor link down to previous apologies. -->
-                <a href="#previous-apologies" class="see-below">&#65088;</a>
-            {% else %}
-                <!-- Note to say we have no recent apologies. -->
-                <p class="see-below">No recent apologies.</p>
-            {% endif %}  
+            <section class="fold-nav">
+                <div class="container">
+                    <!-- Check if we have any previous apologies to display. -->
+                    {% if page.previous_apologies.length %}
+                        <!-- Anchor link down to previous apologies. -->
+                        <a href="#previous-apologies" title="Scroll down to view the previous apologies posted to this page." class="see-below">&#65088;</a>
+                    {% else %}
+                        <!-- Note to say we have no recent apologies. -->
+                        <p class="see-below">No previous apologies.</p>
+                    {% endif %}  
+                </div>
+            </section>
         </header>
 
         <!-- Check if we have any previous apologies to display. -->
