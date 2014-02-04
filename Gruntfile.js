@@ -29,16 +29,28 @@ module.exports = function(grunt) {
     // add test compilation here.
     // TODO: Build a custom task which lops over fixtures, so new fixtures added will be picked up.
     liquid: {
-        success: {
-          options: grunt.file.readJSON("fixtures/ok.json"),
+        no_apologies: {
+          options: grunt.file.readJSON("fixtures/no-apologies.json"),
           files: [
-            { src: "src/index.liquid", dest: "build/ok.html" }
+            { src: "src/index.liquid", dest: "build/no-apologies.html" }
           ]
         },
-        warning: {
-          options: grunt.file.readJSON("fixtures/warning.json"),
+        no_apologies_with_previous: {
+          options: grunt.file.readJSON("fixtures/no-apologies-with-previous.json"),
           files: [
-            { src: "src/index.liquid", dest: "build/warning.html" }
+            { src: "src/index.liquid", dest: "build/no-apologies-with-previous.html" }
+          ]
+        },
+        single_apology: {
+          options: grunt.file.readJSON("fixtures/single-apology.json"),
+          files: [
+            { src: "src/index.liquid", dest: "build/single-apology.html" }
+          ]
+        },
+        multiple_apologies: {
+          options: grunt.file.readJSON("fixtures/multiple-apologies.json"),
+          files: [
+            { src: "src/index.liquid", dest: "build/multiple-apologies.html" }
           ]
         }
     },    
@@ -76,7 +88,7 @@ module.exports = function(grunt) {
 
     // Watch and instant rebuild.
     watch: {
-      files: ["index.html", "src/**/*"],
+      files: ["src/**/*", "fixtures/**/*"],
       tasks: ["default"],
     },
 
