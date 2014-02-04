@@ -5985,6 +5985,9 @@ h2,
 h3 {
   margin-top: 0;
 }
+h3 {
+  font-weight: 600;
+}
 /* Links. */
 .see-below {
   line-height: 2em;
