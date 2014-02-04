@@ -1,25 +1,25 @@
-.status-notice {
-	padding-bottom:@grid-verticle-gutter-width;
+.status-notices {
 	background-color: rgba(255, 255, 255, 0.05);
-}
-
-.status-notice:first-child {
-	padding-top:@grid-verticle-gutter-width;
 }
 
 .previous-apology {
 	border-bottom:1px solid #EFEFEF;
 }
 
+.apology:first-child {
+	margin-top:0;
+}
+
+.apology {
+	margin-top:@grid-verticle-gutter-width;
+}
+
 @media (min-width: @grid-float-breakpoint) {
 	.previous-apology-list {
-		border-left:1px solid #EFEFEF;
-		padding-left:@grid-verticle-gutter-width;	
-	}
-
-	.apology-list {
 		padding-top:@grid-verticle-gutter-width;
 		padding-bottom:@grid-verticle-gutter-width;
+		border-left:1px solid #EFEFEF;
+		padding-left:@grid-verticle-gutter-width;	
 	}
 
 	.previous-apology {
@@ -32,6 +32,7 @@
 		font-size:100px;
 		display:block;
 		position:absolute;
+		top:4px;
 		left:-(@grid-verticle-gutter-width + 8);
 		width:16px;
 		height:16px;

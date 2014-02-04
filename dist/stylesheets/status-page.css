@@ -5970,6 +5970,10 @@ header .page-title,
 header .see-below,
 header .status-notices {
   width: 100%;
+  padding: 25px;
+}
+header .status-notices {
+  padding: 50px 25px;
 }
 /* Base Type. */
 html,
@@ -5980,9 +5984,6 @@ body {
 h2,
 h3 {
   margin-top: 0;
-}
-.page-title {
-  padding: 25px 0;
 }
 /* Links. */
 .see-below {
@@ -6002,6 +6003,7 @@ a.see-below:hover {
 /* Description Lists */
 dt {
   font-weight: inherit;
+  text-align: left !important;
 }
 dl {
   margin-bottom: 0;
@@ -6026,24 +6028,24 @@ dd {
 .state-ok {
   background-color: #7ab800;
 }
-.status-notice {
-  padding-bottom: 50px;
+.status-notices {
   background-color: rgba(255, 255, 255, 0.05);
-}
-.status-notice:first-child {
-  padding-top: 50px;
 }
 .previous-apology {
   border-bottom: 1px solid #EFEFEF;
 }
+.apology:first-child {
+  margin-top: 0;
+}
+.apology {
+  margin-top: 50px;
+}
 @media (min-width: 768px) {
   .previous-apology-list {
-    border-left: 1px solid #EFEFEF;
-    padding-left: 50px;
-  }
-  .apology-list {
     padding-top: 50px;
     padding-bottom: 50px;
+    border-left: 1px solid #EFEFEF;
+    padding-left: 50px;
   }
   .previous-apology {
     position: relative;
@@ -6054,6 +6056,7 @@ dd {
     font-size: 100px;
     display: block;
     position: absolute;
+    top: 4px;
     left: -58px;
     width: 16px;
     height: 16px;
