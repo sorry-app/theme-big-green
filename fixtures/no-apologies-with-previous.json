@@ -1,6 +1,7 @@
 {
   "page": {
     "name": "Skeleton Status Page",
+    "status_notice": "All Is Well",    
     "state": "ok",
     "current_apologies": [],
     "previous_apologies": [
