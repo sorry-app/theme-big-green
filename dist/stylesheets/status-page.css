@@ -5976,10 +5976,13 @@ h3 {
   color: #FFF;
   padding: 30px 0;
   opacity: 0.5;
+  width: 100%;
 }
 a.see-below:hover {
   text-decoration: none;
   background-color: rgba(0, 0, 0, 0.03);
+  opacity: 1;
+  color: #FFF;
 }
 /* Description Lists */
 dt {
@@ -6032,6 +6035,9 @@ body {
   justify-content: space-between;
 }
 .status-notices {
+  width: 100%;
+}
+.page-title {
   width: 100%;
 }
 @media (min-width: 768px) {
