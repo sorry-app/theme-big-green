@@ -113,7 +113,8 @@ module.exports = function(grunt) {
         src: [
               // jQuery & Plugins.
               "src/javascripts/vendor/jquery/jquery.js",
-              "src/javascripts/vendor/jquery/moment.js"],
+              "src/javascripts/vendor/jquery/moment.js",
+              "src/javascripts/vendor/flexie/flexie.min.js"],
         dest: "build/javascripts/<%= pkg.name %>.js",
       },
     },
