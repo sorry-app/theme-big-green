@@ -63,7 +63,6 @@ module.exports = function(grunt) {
           { expand: true, flatten: true, src: "src/index.liquid", dest: "dist/"},
           // Copy assets over to the distribution folder from the build.
           { expand: true, flatten: true, src: "build/stylesheets/*", dest: "dist/stylesheets/"},
-          { expand: true, flatten: true, src: "build/javascripts/*", dest: "dist/javascripts/"},
           // Copy images over to the build and distribution folders.
           { expand: true, cwd: "src/images/", src: "**", dest: "build/images/"},
           { expand: true, cwd: "src/images/", src: "**", dest: "dist/images/"}
@@ -103,20 +102,7 @@ module.exports = function(grunt) {
         npmtag: false, // Don"t deploy to NPM as we don"t want to release like that.
         tagName: "status-page-<%= version %>" // TODO: We can"t use a variable for the package name.
       }
-    },
-
-    // Concatenate the JS assets.
-    concat: {
-      js: {
-        // List these files explicitly to ensure dependancies are loaded in the right order.
-        // TODO: I would love to abstract this dependancy tree out into another config file.
-        src: [
-              // jQuery & Plugins.
-              "src/javascripts/vendor/jquery/jquery.js",
-              "src/javascripts/vendor/jquery/moment.js"],
-        dest: "build/javascripts/<%= pkg.name %>.js",
-      },
-    },
+    }
   });
 
   // LESS Compilation.
@@ -125,8 +111,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-jshint");
   // Watcher for rebuilding when files changes.
   grunt.loadNpmTasks("grunt-contrib-watch");
-  // Plugin for concatenating files.
-  grunt.loadNpmTasks("grunt-contrib-concat");
   // Local webserver.
   grunt.loadNpmTasks("grunt-contrib-connect");
   // Liquid template compiler.
@@ -135,6 +119,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
 
   // Default task(s).
-  grunt.registerTask("default", ["jshint", "less", "concat", "liquid", "copy"]);
+  grunt.registerTask("default", ["jshint", "less", "liquid", "copy"]);
 
 };
