@@ -1,20 +1,12 @@
 header {
-	display: -webkit-box;
-	display: -moz-box;
-	display: box;
+	display:flex;
+	flex-direction:column;
+	align-items:stretch;
+	justify-content:space-between;
 
-	-webkit-box-orient: vertical;
-	-moz-box-orient: vertical;
-	box-orient: vertical;
-
-	-webkit-box-pack: justify;
-	-moz-box-pack: justify;
-	box-pack: justify;
-	
 	min-height:100%;
 
 	.page-title, .status-notices, .fold-nav {
-		width:100%;
 		padding:(@grid-verticle-gutter-width / 2);
 	}
 
