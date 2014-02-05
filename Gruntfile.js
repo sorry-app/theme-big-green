@@ -59,9 +59,14 @@ module.exports = function(grunt) {
     copy: {
       main: {
         files: [
+          // Copy the liquid template from src to the dist folder for push.
           { expand: true, flatten: true, src: "src/index.liquid", dest: "dist/"},
+          // Copy assets over to the distribution folder from the build.
           { expand: true, flatten: true, src: "build/stylesheets/*", dest: "dist/stylesheets/"},
-          { expand: true, flatten: true, src: "build/javascripts/*", dest: "dist/javascripts/"}
+          { expand: true, flatten: true, src: "build/javascripts/*", dest: "dist/javascripts/"},
+          // Copy images over to the build and distribution folders.
+          { expand: true, cwd: "src/images/", src: "**", dest: "build/images/"},
+          { expand: true, cwd: "src/images/", src: "**", dest: "dist/images/"}
         ]
       },
     },

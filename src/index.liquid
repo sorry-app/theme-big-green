@@ -11,6 +11,28 @@
         <!-- We don't want these pages indexed by Google until end of BETA. -->
         <meta name="robots" content="noindex, nofollow" />
 
+        <!-- Favicons. -->
+        <!-- App Details. -->
+        <meta name="application-name" content="{{ page.name }}"/>
+        <meta name="apple-mobile-web-app-title" content="{{ page.name }}" />
+
+        <!-- Standard Favicons. -->
+        <link rel="icon" type="image/png" href="{{ 'images/favicons/favicon-32x32.png' | asset_url }}" sizes="32x32" />
+        <link rel="icon" type="image/png" href="{{ 'images/favicons/favicon-16x16.png' | asset_url }}" sizes="16x16" />
+        <link rel="icon" type="image/x-icon" sizes="16x16 32x32" href="{{ 'images/favicons/favicon.ico' | asset_url }}"  />
+
+        <!-- Apple Touch Devices. -->
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ 'images/favicons/apple-touch-icon-57x57.png' | asset_url }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ 'images/favicons/apple-touch-icon-114x114.png' | asset_url }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ 'images/favicons/apple-touch-icon-72x72.png' | asset_url }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ 'images/favicons/apple-touch-icon-144x144.png' | asset_url }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="120x120" href="{{ 'images/favicons/apple-touch-icon-120x120.png' | asset_url }}" />
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{{ 'images/favicons/apple-touch-icon-152x152.png' | asset_url }}" />
+
+        <!-- Mircosoft Metro Details. -->
+        <meta name="msapplication-TileColor" content="#FFFFFF" />
+        <meta name="msapplication-TileImage" content="{{ 'images/favicons/mstile-144x144.png' | asset_url }}" />
+
         <!-- Dynamicly set the title using the helper methoe. -->
         <title>{{ page.name }}</title>
 
