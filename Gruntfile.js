@@ -1,3 +1,4 @@
+/*global module:false*/
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -5,67 +6,24 @@ module.exports = function(grunt) {
     // Load in the package information.
     pkg: grunt.file.readJSON("package.json"),
 
-    // Development web server.
-    connect: {
-      server: {
-        options : {
-          keepalive: true,
-        }
-      }
-    },
-
     // LESS CSS Compilation.
+    // Compile the LESS source into the build directory.
     less: {
       production: {
         files: {
-          "build/stylesheets/status-page.css": "src/stylesheets/main.less",
+          "build/assets/status-page.css": "src/stylesheets/main.less",
         }
       }
     },
 
-    // Liquid compilataion tasks
-    // If you have your own custom scenarios or situations you wish to
-    // test and develop for add fixtures into the fixtures folder and then
-    // add test compilation here.
-    // TODO: Build a custom task which lops over fixtures, so new fixtures added will be picked up.
-    liquid: {
-        no_apologies: {
-          options: grunt.file.readJSON("fixtures/no-apologies.json"),
-          files: [
-            { src: "src/index.liquid", dest: "build/no-apologies.html" }
-          ]
-        },
-        no_apologies_with_previous: {
-          options: grunt.file.readJSON("fixtures/no-apologies-with-previous.json"),
-          files: [
-            { src: "src/index.liquid", dest: "build/no-apologies-with-previous.html" }
-          ]
-        },
-        single_apology: {
-          options: grunt.file.readJSON("fixtures/single-apology.json"),
-          files: [
-            { src: "src/index.liquid", dest: "build/single-apology.html" }
-          ]
-        },
-        multiple_apologies: {
-          options: grunt.file.readJSON("fixtures/multiple-apologies.json"),
-          files: [
-            { src: "src/index.liquid", dest: "build/multiple-apologies.html" }
-          ]
-        }
-    },    
-
-    // Copy liquid file into the dist folder.
+    // Source files into the build directory.
     copy: {
       main: {
         files: [
           // Copy the liquid template from src to the dist folder for push.
-          { expand: true, flatten: true, src: "src/index.liquid", dest: "dist/"},
-          // Copy assets over to the distribution folder from the build.
-          { expand: true, flatten: true, src: "build/stylesheets/*", dest: "dist/stylesheets/"},
+          { expand: true, flatten: true, src: "src/status-page.liquid", dest: "build/"},
           // Copy images over to the build and distribution folders.
-          { expand: true, cwd: "src/images/", src: "**", dest: "build/images/"},
-          { expand: true, cwd: "src/images/", src: "**", dest: "dist/images/"}
+          { expand: true, flatten: true, cwd: "src/images/", src: "**", dest: "build/assets/"}
         ]
       },
     },
@@ -74,51 +32,67 @@ module.exports = function(grunt) {
     jshint: {
       // These are best practices taken as best practices from Bootstrap.
       options: {
-        "asi"      : true,
-        "boss"     : true,
-        "browser"  : true,
-        "curly"    : false,
-        "debug"    : true,
-        "devel"    : true,
-        "eqeqeq"   : false,
-        "eqnull"   : true,
-        "expr"     : true,
-        "laxbreak" : true,
-        "quotmark" : "double",
-        "validthis": true
+        curly: true,
+        eqeqeq: true,
+        immed: true,
+        latedef: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        undef: true,
+        unused: true,
+        boss: true,
+        eqnull: true,
+        globals: {}
       },
       all: ["Gruntfile.js", "package.json", "fixtures/status-page.json"]
     },
 
-    // Watch and instant rebuild.
+    // Directory watching.
     watch: {
-      files: ["src/**/*", "fixtures/**/*"],
-      tasks: ["default"],
+      gruntfile: {
+        files: '<%= jshint.gruntfile.src %>',
+        tasks: ['jshint:gruntfile']
+      },
+      theme: {
+        files: 'src/**/*',
+        tasks: ['deploy'],
+        options: {
+          interrupt: true,
+        }
+      }
     },
 
-    // Release & Deployment Tasks.
-    release: {
+    // Load in your sorry credentials.
+    // NOTE: NEVER CHECK YOUR CREDENTIALS INTO YOUR REPOSITORY.
+    sorry: grunt.file.readJSON('sorry.json'),
+
+    // Sorry theme deployment.
+    sorry_theme_deploy: {
       options: {
-        npmtag: false, // Don"t deploy to NPM as we don"t want to release like that.
-        tagName: "status-page-<%= version %>" // TODO: We can"t use a variable for the package name.
+        username: '<%= sorry.username %>',
+        password: '<%= sorry.password %>',
+        page: 'roberts-latest-page',
+        host: 'http://api.weboffins.com'
+      },     
+      valid_theme: {
+        expand: true,
+        cwd: 'build/',
+        src: ['**/*']
       }
-    }
+    },
+
   });
 
-  // LESS Compilation.
+  // These plugins provide necessary tasks.
   grunt.loadNpmTasks("grunt-contrib-less");
-  // Load the plugin that validates the JS markup.
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  // Watcher for rebuilding when files changes.
-  grunt.loadNpmTasks("grunt-contrib-watch");
-  // Local webserver.
-  grunt.loadNpmTasks("grunt-contrib-connect");
-  // Liquid template compiler.
-  grunt.loadNpmTasks("grunt-liquid");
-  // Copy files around.
-  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-sorry-theme-deploy');
 
   // Default task(s).
-  grunt.registerTask("default", ["jshint", "less", "liquid", "copy"]);
+  grunt.registerTask("build", ["jshint", "less", "copy"]);
+  grunt.registerTask("deploy", ["build", "sorry_theme_deploy"]);
 
 };
