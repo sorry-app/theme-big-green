@@ -1901,6 +1901,11 @@ dd {
   display: block;
   opacity: 0.8;
 }
+/* Muted Text */
+.text-muted {
+  color: inherit;
+  opacity: 0.75;
+}
 [class*='state-'] {
   color: #FFF;
 }

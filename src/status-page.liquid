@@ -59,37 +59,28 @@
             <section class="status-notices">
                 <!-- Loop over the collection of current apologies. -->
                 {% for apology in page.apologies.current %}
-                    <div class="status-notice apology" id="apology-{{ apology.id }}">
+                    <article class="status-notice apology" id="apology-{{ apology.id }}">
                         <div class="container">
-                            <!-- Loop over any updates we have for the apology -->
-                            <!-- We reverse the order so the latest update displays first as the priority. -->
-                            {% for update in apology.updates reversed %}
-                                <p class="update" id="update-{{ update.id }}">
-                                    <span class="block-time">
-                                        Last Updated 
-                                        <!-- Output the datetime for the update, with live timer incrememnt. -->
-                                        <time>
-                                            {{ update.created_at | time_ago_in_words }} ago.
-                                        </time>
-                                    </span>
-
-                                    <!-- OUtput the text content for the update. -->
-                                    {{ update.content }}
-                                </p>
-                            {% else %}
-                                <!-- If we have no updates to display, show a message to this effect. -->
-                                <p class="no-updates">We have no further updates on this yet.</p>
-                            {% endfor %}
+                            <dl class="dl-horizontal">
+                                <!-- Loop over any updates we have for the apology -->
+                                <!-- We reverse the order so the latest update displays first as the priority. -->
+                                {% for update in apology.updates reversed %}
+                                    <!-- Output the date for the update. -->
+                                    <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | time_ago_in_words }}</dt>
+                                        <!-- Output the text content of the update. -->
+                                        <dd>{{ update.content }}</dd>
+                                {% endfor %}
+                            </dl>
                         </div>
-                    </div>
+                    </article>
                 {% else %}
-                    <div class="status-notice status-ok">
+                    <article class="status-notice status-ok">
                         <div class="container">
                             <!-- No current apologies found -->
                             <!-- We have nothing to be sorry about, so all is well. -->
                             <h2>All Is Well</h2>
                         </div>
-                    </div>
+                    </article>
                 {% endfor %}
             </section>
 
@@ -123,8 +114,8 @@
                                     {% for update in apology.updates %}
                                         <!-- Output the date for the update. -->
                                         <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | distance_of_time_in_words: apology.created_at, update.created_at }} in.</dt>
-                                        <!-- Output the text content of the update. -->
-                                        <dd>{{ update.content }}</dd>
+                                            <!-- Output the text content of the update. -->
+                                            <dd>{{ update.content }}</dd>
                                     {% endfor %}
                                 </dl>
                             </article>
