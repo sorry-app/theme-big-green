@@ -96,7 +96,7 @@
             <section class="fold-nav">
                 <div class="container">
                     <!-- Check if we have any previous apologies to display. -->
-                    {% if page.apologies.recent %}
+                    {% if page.apologies.recent.size > 0 %}
                         <!-- Anchor link down to previous apologies. -->
                         <a href="#previous-apologies" title="Scroll down to view the previous apologies posted to this page." class="see-below">&#65088;</a>
                     {% else %}
@@ -108,7 +108,7 @@
         </header>
 
         <!-- Check if we have any previous apologies to display. -->
-        {% if page.apologies.recent %}
+        {% if page.apologies.recent.size > 0 %}
             <!-- Block For previous apolgies. -->
             <section id="previous-apologies" class="previous-apologies">
                 <div class="container">
