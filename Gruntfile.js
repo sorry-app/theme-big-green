@@ -72,8 +72,8 @@ module.exports = function(grunt) {
       options: {
         username: '<%= sorry.username %>',
         password: '<%= sorry.password %>',
-        page: 'roberts-latest-page',
-        host: 'http://api.weboffins.com'
+        page: 'my-first-status-page',
+        host: 'http://api.lvh.me:3000'
       },     
       valid_theme: {
         expand: true,

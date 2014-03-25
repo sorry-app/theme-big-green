@@ -61,21 +61,9 @@
                 {% for apology in page.apologies.current %}
                     <div class="status-notice apology" id="apology-{{ apology.id }}">
                         <div class="container">
-                            <!-- Output the title for the apology. -->
-                            <h2>
-                                <!-- Output the date the apology was created, with live timer increment. -->
-                                <span class="block-time">Started 
-                                    <time>
-                                        {{ apology.created_at | time_ago_in_words }}
-                                    </time> ago.
-                                </span>
-
-                                <!-- Output the apology description. -->
-                                {{ apology.description }}
-                            </h2>
-
-                            <!-- Loop over any updates we have for the apology, only displaying the last. -->
-                            {% for update in apology.updates %}
+                            <!-- Loop over any updates we have for the apology -->
+                            <!-- We reverse the order so the latest update displays first as the priority. -->
+                            {% for update in apology.updates reversed %}
                                 <p class="update" id="update-{{ update.id }}">
                                     <span class="block-time">
                                         Last Updated 
@@ -130,18 +118,6 @@
                         <!-- Loop over the collection of previous apologies, order date descending. -->
                         {% for apology in page.apologies.recent %}
                             <article class="status-notice apology previous-apology" id="apology-{{ apology.id }}">
-                                <h4>
-                                    <!-- Output the date for the apology, with live timer increment. -->
-                                    <span class="block-time">Started 
-                                        <time>
-                                            {{ apology.created_at | date: '%A %B %d %Y %I:%M %p' }}
-                                        </time>
-                                    </span>
-                                    
-                                    <!-- Output the description of the apology. -->
-                                    {{ apology.description }}
-                                </h4>
-
                                 <dl class="dl-horizontal">
                                     <!-- Loop over the updates, showing all, in date order. -->
                                     {% for update in apology.updates %}
