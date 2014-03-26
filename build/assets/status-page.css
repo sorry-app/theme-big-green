@@ -1831,16 +1831,23 @@ td.visible-print {
     display: none !important;
   }
 }
+/* Base page styles */
+/* Full height for large flexible box header. */
 html,
 body {
   height: 100%;
 }
+/* Layout for the page header block. */
 header {
+  /* Box model for verticaly centering content */
   display: flex;
   flex-direction: column;
   align-items: stretch;
   justify-content: space-between;
   min-height: 100%;
+  /* Fold jump navigation. */
+  /* Status notices. */
+  /* State based colouring for the header of the page. */
 }
 header .page-title,
 header .status-notices,
@@ -1853,6 +1860,16 @@ header .fold-nav {
 header .status-notices {
   padding: 50px 25px;
 }
+header[class*='state-'] {
+  color: #FFF;
+}
+header.state-warning {
+  background-color: #ff7b29;
+}
+header.state-ok {
+  background-color: #7ab800;
+}
+/* Typography. */
 /* Base Type. */
 html,
 body {
@@ -1895,35 +1912,16 @@ dt {
 dl {
   margin-bottom: 0;
 }
-dt,
-dd {
-  line-height: 2.1428571435;
-  font-size: 16px;
-}
 .current-apology dl dt:first-child,
 .current-apology dl dd:nth-child(2) {
   font-size: 1.1em;
-}
-/* Timestamps */
-.block-time {
-  font-size: 0.75em;
-  display: block;
-  opacity: 0.8;
 }
 /* Muted Text */
 .text-muted {
   color: inherit;
   opacity: 0.75;
 }
-[class*='state-'] {
-  color: #FFF;
-}
-.state-warning {
-  background-color: #ff7b29;
-}
-.state-ok {
-  background-color: #7ab800;
-}
+/* Layout for apologies on the page. */
 .status-notices {
   background-color: rgba(255, 255, 255, 0.05);
 }
@@ -1936,7 +1934,9 @@ dd {
 .previous-apology-list {
   padding: 50px 25px;
 }
+/* Formatting on larger screens. */
 @media (min-width: 768px) {
+  /* Timeline Effect */
   .previous-apology-list {
     border-left: 1px solid #EFEFEF;
     padding: 100px 50px;

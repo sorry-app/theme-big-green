@@ -1,3 +1,5 @@
+/* Layout for apologies on the page. */
+
 .status-notices {
 	background-color: rgba(255, 255, 255, 0.05);
 }
@@ -14,19 +16,20 @@
 	padding:@grid-verticle-gutter-width (@grid-verticle-gutter-width / 2);	
 }
 
-// Formatting on larger screens.
+/* Formatting on larger screens. */
 @media (min-width: @screen-sm-min) {
 
+	/* Timeline Effect */
+
 	.previous-apology-list {
-		border-left:1px solid #EFEFEF; // Add a border to the left, to give a timeline effect.
-		padding:(@grid-verticle-gutter-width * 2) @grid-verticle-gutter-width; // Double the padding on larger screens.
+		border-left:1px solid #EFEFEF;
+		padding:(@grid-verticle-gutter-width * 2) @grid-verticle-gutter-width;
 	}
 
 	.previous-apology {
 		position:relative;
 	}
 
-	// Round grey icons to give the timeline effect
 	.previous-apology:before {
 		content: ' ';
 		font-size:100px;

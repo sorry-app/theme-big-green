@@ -1,3 +1,5 @@
+/* Typography. */
+
 /* Base Type. */
 
 html, body {
@@ -44,35 +46,23 @@ a.see-below:hover {
 /* Description Lists */
 
 dt {
-	font-weight:inherit;
-	text-align:left !important;
+	font-weight:inherit; // Remove the bold font default.
+	text-align:left !important; // Remove the right alignment.
 }
 
 dl {
 	margin-bottom:0;
 }
 
-dt,
-dd {
-	line-height: @line-height-base * 1.5;
-	font-size:16px;
-}
-
+// Enlarge the font size of the top update on a current apology.
 .current-apology dl dt:first-child, .current-apology dl dd:nth-child(2) {
-	font-size:1.1em; // Enlarge the font size of the top update on a current apology.
-}
-
-/* Timestamps */
-
-.block-time {
-	font-size:0.75em;
-	display:block;
-	opacity:0.8; // TODO: Switch for a CSS3 mixin.
+	font-size:1.1em; 
 }
 
 /* Muted Text */
 
 .text-muted {
+	// Use opacity for text-muted rather than block grey so it can be applied to any colour text.
 	color:inherit;
 	opacity:0.75;
 }
