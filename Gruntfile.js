@@ -59,6 +59,13 @@ module.exports = function(grunt) {
       }
     },
 
+    // Release / Version of the theme.
+    release: {
+      options: {
+        npmtag: false
+      }
+    },
+
     // Load in your sorry credentials.
     // NOTE: NEVER CHECK YOUR CREDENTIALS INTO YOUR REPOSITORY.
     sorry: grunt.file.readJSON('sorry.json'),
@@ -84,6 +91,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sorry-theme-deploy');
+  grunt.loadNpmTasks('grunt-release');
 
   // Default task(s).
   grunt.registerTask("build", ["jshint", "less", "copy"]);

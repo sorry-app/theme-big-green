@@ -1,4 +1,25 @@
 {
+  "name": "theme-big-green",
+  "description": "The default big green status page theme for Sorry.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/supporttime/theme-big-green",
+  "author": {
+    "name": "Robert Rawlins",
+    "email": "robert@sorryapp.com"
+  },
+  "contributors": [
+    {
+      "name": "Robin Geall",
+      "email": "robin@sorryapp.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:supporttime/theme-big-green.git"
+  },
+  "bugs": {
+    "url": "https://github.com/supporttime/theme-big-green/issues"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -8,6 +29,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-less": "~0.8.3",
     "grunt-sorry-theme-deploy": "0.2.1",
-    "grunt-contrib-copy": "^0.5.0"
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-release": "^0.7.0"
   }
 }
