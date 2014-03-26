@@ -4,12 +4,17 @@
 	background-color: rgba(255, 255, 255, 0.05);
 }
 
-.apology:first-child {
-	margin-top:0;
+.apology {
+	padding:(@grid-verticle-gutter-width / 2) 0;
+	border-bottom:1px solid rgba(255, 255, 255, 0.2);
 }
 
-.apology {
-	margin-top:@grid-verticle-gutter-width;
+.previous-apology {
+	border-color:rgba(0, 0, 0, 0.1);
+}
+
+.apology:last-child {
+	border:none;
 }
 
 .previous-apology-list {
@@ -28,6 +33,7 @@
 
 	.previous-apology {
 		position:relative;
+		border-bottom:none; // Hide the horizontal dividing line.
 	}
 
 	.previous-apology:before {
@@ -35,8 +41,8 @@
 		font-size:100px;
 		display:block;
 		position:absolute;
-		top:4px;
-		left:-(@grid-verticle-gutter-width+ 8);
+		top: (@grid-verticle-gutter-width - 8);
+		left:-(@grid-verticle-gutter-width + 8);
 		width:16px;
 		height:16px;
 		border-radius:50%;

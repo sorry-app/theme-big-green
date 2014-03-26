@@ -1846,7 +1846,6 @@ header {
   justify-content: space-between;
   min-height: 100%;
   /* Fold jump navigation. */
-  /* Status notices. */
   /* State based colouring for the header of the page. */
 }
 header .page-title,
@@ -1856,9 +1855,6 @@ header .fold-nav {
 }
 header .fold-nav {
   padding-bottom: 0;
-}
-header .status-notices {
-  padding: 50px 25px;
 }
 header[class*='state-'] {
   color: #FFF;
@@ -1934,11 +1930,15 @@ dl {
 .status-notices {
   background-color: rgba(255, 255, 255, 0.05);
 }
-.apology:first-child {
-  margin-top: 0;
-}
 .apology {
-  margin-top: 50px;
+  padding: 25px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.previous-apology {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.apology:last-child {
+  border: none;
 }
 .previous-apology-list {
   padding: 50px 25px;
@@ -1952,13 +1952,14 @@ dl {
   }
   .previous-apology {
     position: relative;
+    border-bottom: none;
   }
   .previous-apology:before {
     content: ' ';
     font-size: 100px;
     display: block;
     position: absolute;
-    top: 4px;
+    top: 42px;
     left: -58px;
     width: 16px;
     height: 16px;
