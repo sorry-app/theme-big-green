@@ -50,10 +50,6 @@ module.exports = function(grunt) {
 
     // Directory watching.
     watch: {
-      gruntfile: {
-        files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile']
-      },
       theme: {
         files: 'src/**/*',
         tasks: ['deploy'],
