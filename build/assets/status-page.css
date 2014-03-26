@@ -1868,6 +1868,8 @@ header .fold-nav {
 }
 header .fold-nav {
   padding-bottom: 0;
+  position: relative;
+  bottom: 0;
 }
 header[class*='state-'] {
   color: #FFF;
