@@ -1930,8 +1930,10 @@ dl {
 .status-notices {
   background-color: rgba(255, 255, 255, 0.05);
 }
-.apology {
+.status-notice {
   padding: 25px 0;
+}
+.apology {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .previous-apology {
