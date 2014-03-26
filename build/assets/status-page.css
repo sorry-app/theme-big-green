@@ -1840,6 +1840,8 @@ body {
 /* Layout for the page header block. */
 header {
   min-height: 100%;
+  position: relative;
+  padding-bottom: 95px;
   /* Fold jump navigation. */
   /* State based colouring for the header of the page. */
 }
@@ -1850,6 +1852,12 @@ header .fold-nav {
 }
 header .fold-nav {
   padding-bottom: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 header[class*='state-'] {
   color: #FFF;
@@ -1859,35 +1867,6 @@ header.state-warning {
 }
 header.state-ok {
   background-color: #7ab800;
-}
-.js.flexbox header {
-  /* Flexbox for verticaly centering and spacing the header elements. */
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
-}
-.js.no-flexbox header {
-  /* Without flexbox support we pin the fold-nav to the bottom of the header using absolute positioning. */
-  position: relative;
-  padding-bottom: 150px;
-}
-.js.no-flexbox header .fold-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
 }
 /* Typography. */
 /* Base Type. */
@@ -1953,6 +1932,7 @@ dl {
 /* Layout for apologies on the page. */
 .status-notices {
   background-color: rgba(255, 255, 255, 0.05);
+  margin: 50px 0;
 }
 .status-notice {
   padding: 25px 0;
