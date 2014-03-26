@@ -62,7 +62,7 @@ module.exports = function(grunt) {
     // Release / Version of the theme.
     release: {
       options: {
-        npmtag: false
+        npm: false
       }
     },
 
