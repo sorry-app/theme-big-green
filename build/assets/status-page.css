@@ -454,10 +454,10 @@ cite {
   color: #3071a9;
 }
 .text-warning {
-  color: #8a6d3b;
+  color: #ff7b29;
 }
 .text-warning:hover {
-  color: #66512c;
+  color: #f55e00;
 }
 .text-danger {
   color: #a94442;
@@ -466,10 +466,10 @@ cite {
   color: #843534;
 }
 .text-success {
-  color: #3c763d;
+  color: #7ab800;
 }
 .text-success:hover {
-  color: #2b542c;
+  color: #588500;
 }
 .text-info {
   color: #31708f;

@@ -111,19 +111,26 @@
                         <!-- Loop over the collection of previous apologies, order date descending. -->
                         {% for apology in page.apologies.recent %}
                             <article class="status-notice apology previous-apology" id="apology-{{ apology.id }}">
-                                <!-- Duration of the apology. -->
-                                <h4><strong>{{ apology.created_at | date: '%-d %b %I:%M %p' }}</strong> to <strong>{{ apology.closed_at | date: '%-d %b %I:%M %p' }}</strong></h4>
+                                <!-- Start time for the apology. -->
+                                <h4 class="text-warning">
+                                    <strong>Started:</strong> {{ apology.created_at | date: '%-d %B %R' }}
+                                </h4>
 
                                 <!-- Apology updates. -->
                                 <dl class="dl-horizontal">
                                     <!-- Loop over the updates, showing all, in date order. -->
                                     {% for update in apology.updates %}
                                         <!-- Output the date for the update. -->
-                                        <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | date: '%-d %b - %I:%M %p' }}</dt>
+                                        <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | date: '%-d %B - %R' }}</dt>
                                             <!-- Output the te%D xt content of the update. -->
                                             <dd>{{ update.content }}</dd>
                                     {% endfor %}
                                 </dl>
+
+                                <!-- End time for the apology. -->
+                                <h5 class="text-success">
+                                    <strong>Ended:</strong> {{ apology.closed_at | date: '%-d %B %R' }}
+                                </h5>
                             </article>
                         {% endfor %}
                     </div>
