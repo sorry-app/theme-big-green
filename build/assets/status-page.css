@@ -1907,10 +1907,19 @@ a.see-below:hover {
 /* Description Lists */
 dt {
   font-weight: inherit;
-  text-align: left !important;
+}
+dd {
+  line-height: 1.6em;
+  margin-bottom: 1.2em;
+}
+dd:last-child {
+  margin-bottom: 0;
 }
 dl {
-  margin-bottom: 0;
+  margin: 1.2em 0;
+}
+.previous-apology dt {
+  text-align: left !important;
 }
 .current-apology dl dt:first-child,
 .current-apology dl dd:nth-child(2) {
