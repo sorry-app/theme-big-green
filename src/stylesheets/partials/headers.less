@@ -3,8 +3,6 @@
 header {
 
 	min-height:100%;
-	position:relative;
-	padding-bottom:95px;
 
 	.page-title, .status-notices, .fold-nav {
 		padding:(@grid-verticle-gutter-width / 2);
@@ -14,13 +12,7 @@ header {
 
 	.fold-nav {
 		padding-bottom:0;
-		position:absolute;
-		bottom:0;
-		left:0;
-		right:0;
-		margin-left:auto;
-		margin-right:auto;
-	}	
+	}
 
 	/* State based colouring for the header of the page. */
 
@@ -36,4 +28,36 @@ header {
 		background-color:@brand-success;
 	}
 
+}
+
+.js.flexbox {
+	header {
+
+		/* Flexbox for verticaly centering and spacing the header elements. */
+
+		.flex-display(flex);
+		.flex-direction(column);
+		.justify-content(space-between);
+
+	}
+}
+
+.js.no-flexbox {
+	header {
+
+		/* Without flexbox support we pin the fold-nav to the bottom of the header using absolute positioning. */
+
+		position:relative;
+		padding-bottom:150px;
+
+		.fold-nav {
+			position:absolute;
+			bottom:0;
+			left:0;
+			right:0;
+			margin-left:auto;
+			margin-right:auto;
+		}
+
+	}
 }
