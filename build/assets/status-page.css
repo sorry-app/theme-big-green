@@ -1839,6 +1839,27 @@ body {
 }
 /* Layout for the page header block. */
 header {
+  /* 
+		Flexbox for verticaly centering and spacing the header elements. 
+
+		This should work in all modern browsers however IE has a known bug with Flexbox and
+		min-height which means it doesn't work quite as expected.
+
+		http://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+	*/
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
   min-height: 100%;
   /* State based colouring for the header of the page. */
 }
@@ -1855,35 +1876,6 @@ header.state-warning {
 }
 header.state-ok {
   background-color: #7ab800;
-}
-.flexbox header {
-  /* Flexbox for verticaly centering and spacing the header elements. */
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flexbox;
-  display: -ms-flex;
-  display: flex;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-justify-content: space-between;
-  -moz-justify-content: space-between;
-  -ms-justify-content: space-between;
-  justify-content: space-between;
-}
-.no-flexbox header {
-  /* Without flexbox support we pin the fold-nav to the bottom of the header using absolute positioning. */
-  position: relative;
-  padding-bottom: 98px;
-}
-.no-flexbox header .fold-nav {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
 }
 /* Typography. */
 /* Base Type. */
@@ -1946,6 +1938,7 @@ dl {
 /* Layout for apologies on the page. */
 .status-notices {
   background-color: rgba(255, 255, 255, 0.05);
+  margin: 50px 0;
 }
 .status-notice {
   padding: 25px 0;

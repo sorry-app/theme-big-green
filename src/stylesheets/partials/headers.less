@@ -2,6 +2,19 @@
 
 header {
 
+	/* 
+		Flexbox for verticaly centering and spacing the header elements. 
+
+		This should work in all modern browsers however IE has a known bug with Flexbox and
+		min-height which means it doesn't work quite as expected.
+
+		http://connect.microsoft.com/IE/feedback/details/802625/min-height-and-flexbox-flex-direction-column-dont-work-together-in-ie-10-11-preview
+	*/
+
+	.flex-display(flex);
+	.flex-direction(column);
+	.justify-content(space-between);
+
 	min-height:100%;
 
 	.page-title, .status-notices, .fold-nav {
@@ -22,36 +35,4 @@ header {
 		background-color:@brand-success;
 	}
 
-}
-
-.flexbox {
-	header {
-
-		/* Flexbox for verticaly centering and spacing the header elements. */
-
-		.flex-display(flex);
-		.flex-direction(column);
-		.justify-content(space-between);
-
-	}
-}
-
-.no-flexbox {
-	header {
-
-		/* Without flexbox support we pin the fold-nav to the bottom of the header using absolute positioning. */
-
-		position:relative;
-		padding-bottom:98px;
-
-		.fold-nav {
-			position:absolute;
-			bottom:0;
-			left:0;
-			right:0;
-			margin-left:auto;
-			margin-right:auto;
-		}
-
-	}
 }
