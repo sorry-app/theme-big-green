@@ -44,4 +44,4 @@ For more information on SemVer, please visit <http://semver.org/>.
 
 ## Copyright
 
-&copy; Copyright 2014 - Sorry
+&copy; Copyright 2014 - Sorry - See [LICENSE](LICENSE) for details.
