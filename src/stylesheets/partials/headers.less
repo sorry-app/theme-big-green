@@ -8,12 +8,6 @@ header {
 		padding:(@grid-verticle-gutter-width / 2);
 	}
 
-	/* Fold jump navigation. */
-
-	.fold-nav {
-		padding-bottom:0;
-	}
-
 	/* State based colouring for the header of the page. */
 
 	&[class*='state-'] {
@@ -30,7 +24,7 @@ header {
 
 }
 
-.js.flexbox {
+.flexbox {
 	header {
 
 		/* Flexbox for verticaly centering and spacing the header elements. */
@@ -42,13 +36,13 @@ header {
 	}
 }
 
-.js.no-flexbox {
+.no-flexbox {
 	header {
 
 		/* Without flexbox support we pin the fold-nav to the bottom of the header using absolute positioning. */
 
 		position:relative;
-		padding-bottom:150px;
+		padding-bottom:98px;
 
 		.fold-nav {
 			position:absolute;
