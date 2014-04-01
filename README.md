@@ -13,7 +13,7 @@
 
 The simplest option if you don't wish to make any changes to the theme is to upload the [zip file found in the dist folder](dist/theme.zip) through your user interface of your Sorry account.
 
-**If you make any changes you'll need to rezip your theme before you upload it, [as per the Sorry docs](http://docs.sorryapp.com/themes/getting-started/uploading-your-theme.html).**
+**If you make any changes you'll need to rezip your theme before you upload it, [as per the Sorry docs](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html).**
 
 ## Automatic Deployment with Grunt
 
@@ -45,7 +45,7 @@ We need somewhere to keep your Sorry login credentials. In the root of your proj
 
 ### Deploying Your Theme
 
-Now we have your authentication details in place we should be ready to deploy the theme. **However, as per our docs [we suggest you create a demo page for testing your theme](http://docs.sorryapp.com/themes/getting-started/uploading-your-theme.html), rather than deploying to your live page.**
+Now we have your authentication details in place we should be ready to deploy the theme. **However, as per our docs [we suggest you create a demo page for testing your theme](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html), rather than deploying to your live page.**
 
 When you're ready to deploy, use the `deploy` task from the command line:
 
