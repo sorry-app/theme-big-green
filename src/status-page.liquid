@@ -113,7 +113,7 @@
                             <article class="status-notice apology previous-apology" id="apology-{{ apology.id }}">
                                 <!-- Start time for the apology. -->
                                 <h4 class="text-warning">
-                                    <strong>Started:</strong> {{ apology.created_at | date: '%-d %B %R' }}
+                                    <strong>Started:</strong> {{ apology.created_at | date: '%-d %B %R %Z' }}
                                 </h4>
 
                                 <!-- Apology updates. -->
@@ -121,7 +121,7 @@
                                     <!-- Loop over the updates, showing all, in date order. -->
                                     {% for update in apology.updates %}
                                         <!-- Output the date for the update. -->
-                                        <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | date: '%-d %B - %R' }}</dt>
+                                        <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | date: '%-d %B - %R %Z' }}</dt>
                                             <!-- Output the te%D xt content of the update. -->
                                             <dd>{{ update.content }}</dd>
                                     {% endfor %}
@@ -129,7 +129,7 @@
 
                                 <!-- End time for the apology. -->
                                 <h5 class="text-success">
-                                    <strong>Ended:</strong> {{ apology.closed_at | date: '%-d %B %R' }}
+                                    <strong>Ended:</strong> {{ apology.closed_at | date: '%-d %B %R %Z' }}
                                 </h5>
                             </article>
                         {% endfor %}
