@@ -24,6 +24,9 @@ module.exports = function(grunt) {
       }
     },
 
+    // Clean the build directory before we do anything.
+    clean: ["build/"],
+
     // Javascript validation.
     jshint: {
       // Validate the gruntfile and theme src.
@@ -74,6 +77,7 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks("grunt-contrib-less");
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-sorry-theme-deploy');
@@ -81,6 +85,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-release');
 
   // Default task(s).
-  grunt.registerTask("deploy", ["jshint", "less", "copy", "sorry_theme_deploy"]);
+  grunt.registerTask("deploy", ["jshint", "clean", "less", "copy", "sorry_theme_deploy"]);
 
 };
