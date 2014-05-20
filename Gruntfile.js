@@ -37,6 +37,9 @@ module.exports = function(grunt) {
     // Compile the LESS source into the build directory.
     less: {
       production: {
+        options: {
+          cleancss: true,
+        },
         files: {
           "build/assets/status-page.css": "src/stylesheets/main.less",
         }
