@@ -33,6 +33,19 @@ module.exports = function(grunt) {
       all: ["Gruntfile.js", "src/assets/*.js"]
     },
 
+    // JS Minification + Concatination.
+    uglify: {
+      my_target: {
+        files: {
+          'build/assets/status-page.min.js': [
+            'src/javascripts/jquery-1.11.1.min.js', 
+            'src/javascripts/moment.js',
+            'src/javascripts/status-page.js'
+          ]
+        }
+      }
+    },
+
     // LESS CSS Compilation.
     // Compile the LESS source into the build directory.
     less: {
@@ -90,8 +103,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sorry-theme-deploy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-release');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   // Default task(s).
-  grunt.registerTask("deploy", ["jshint", "clean", "less", "copy", "sorry_theme_deploy"]);
+  grunt.registerTask("deploy", ["jshint", "clean", "less", "uglify", "copy", "sorry_theme_deploy"]);
 
 };
