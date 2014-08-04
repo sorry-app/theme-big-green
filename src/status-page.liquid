@@ -67,7 +67,12 @@
                                 <!-- We reverse the order so the latest update displays first as the priority. -->
                                 {% for update in apology.updates reversed %}
                                     <!-- Output the date for the update. -->
-                                    <dt class="text-muted" id="update-{{ update.id }}">{{ update.created_at | time_ago_in_words }} ago</dt>
+                                    <dt class="text-muted" id="update-{{ update.id }}">
+                                        <!-- Datetime, augmented to 'time_ago_in_words' by moment.js -->
+                                        <time class="ago" datetime="{{ update.created_at | date: '%FT%TZ' }}">
+                                            {{ update.created_at | date: '%FT%TZ' }}
+                                        </time>
+                                    </dt>
                                         <!-- Output the text content of the update. -->
                                         <dd>{{ update.content }}</dd>
                                 {% endfor %}
@@ -137,5 +142,10 @@
                 </div>
             </section>
         {% endif %}
+
+        <!-- Javascript Assets. -->
+        <script src="{{ 'jquery-1.11.1.min.js' | asset_url }}"></script>
+        <script src="{{ 'moment.js' | asset_url }}"></script>
+        <script src="{{ 'status-page.js' | asset_url }}"></script>
     </body>
 </html>
