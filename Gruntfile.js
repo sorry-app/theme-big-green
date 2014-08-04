@@ -68,7 +68,7 @@ module.exports = function(grunt) {
           // Copy images over to the build and distribution folders.
           { expand: true, flatten: true, cwd: "src/images/", src: "**", dest: "build/assets/"},
           // Copy javascript assets.
-          { expand: true, flatten: true, cwd: "src/javascripts/", src: "**", dest: "build/assets/"},  
+          { expand: true, flatten: true, cwd: "src/javascripts/", src: "**/*.min.js", dest: "build/assets/"},  
           // Copy webfont assets.
           { expand: true, flatten: true, cwd: "src/fonts/", src: "**", dest: "build/assets/"},                    
         ]
