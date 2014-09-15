@@ -1,6 +1,6 @@
 # Theme - Big Green
 
-> This the default theme used for [Sorry](http://www.sorryapp.com) status page's. You can use this to make minor tweaks and ammendments, as a basis for your own theme, or as a learning resource.
+> This is the default theme used for [Sorry](http://www.sorryapp.com) status pages. You can use this to make minor tweaks and amendments, as a basis for your own theme, or as a learning resource.
 >
 > **For more details on theme development, read our [Theme documenation](http://docs.sorryapp.com/themes)**.
 
@@ -11,15 +11,15 @@
 
 ## Manual Deployment
 
-The simplest option if you don't wish to make any changes to the theme is to upload the [zip file found in the dist folder](dist/theme.zip) through your user interface of your Sorry account.
+The simplest option if you don't wish to make any changes to the theme is to upload the [zip file found in the dist folder](dist/theme.zip) through the user interface of your Sorry account.
 
-**If you make any changes you'll need to rezip your theme before you upload it, [as per the Sorry docs](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html).**
+**If you make any changes, you'll need to rezip your theme before you upload it, [as per the Sorry docs](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html).**
 
 ## Automatic Deployment with Grunt
 
-To make development and deployment of the theme even easier you can use the included Grunt deployment tasks.
+To make development and deployment of the theme even easier, you can use the included Grunt deployment tasks.
 
-These tasks take the themes source code, bundle it into a deployable zip and upload it to your status page through the Sorry API.
+These tasks take the theme's source code, bundle it into a deployable zip, and upload it to your status page through the Sorry API.
 
 ### Installing Grunt
 
@@ -45,7 +45,7 @@ We need somewhere to keep your Sorry login credentials. In the root of your proj
 
 ### Deploying Your Theme
 
-Now we have your authentication details in place we should be ready to deploy the theme. **However, as per our docs [we suggest you create a demo page for testing your theme](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html), rather than deploying to your live page.**
+Now we have your authentication details in place, we should be ready to deploy the theme. **However, as per our docs [we suggest you create a demo page for testing your theme](http://docs.sorryapp.com/themes/getting-started/deploying-your-theme.html), rather than deploying to your live page.**
 
 When you're ready to deploy, use the `deploy` task from the command line:
 
@@ -75,7 +75,7 @@ Once you are happy that your contribution is ready for production please send us
 
 ## Versioning
 
-For transparency and insight into our release cycle, and for striving to maintain backward compatibility, This project will be maintained under the Semantic Versioning guidelines as much as possible.
+For transparency and insight into our release cycle, and for striving to maintain backward compatibility, this project will be maintained under the Semantic Versioning guidelines as much as possible.
 
 Releases will be numbered with the following format:
 
