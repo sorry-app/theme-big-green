@@ -55,6 +55,9 @@
 
         <!-- Include CSS Assets. -->
         <link rel="stylesheet" href="{{ 'status-page.css' | asset_url }}" />
+
+        <!-- Injected Head Content. -->
+        {{ page.content_for_head }}
     </head>
     <body>
         <header class="current-state {% if page.apologies.current == empty %}state-ok{% else %}state-warning{% endif %}">
@@ -155,5 +158,8 @@
 
         <!-- Javascript Assets. -->
         <script src="{{ 'status-page.min.js' | asset_url }}"></script>
+        
+        <!-- Injected Head Content. -->
+        {{ page.content_for_body }}
     </body>
 </html>
