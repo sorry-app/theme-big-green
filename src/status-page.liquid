@@ -8,8 +8,21 @@
         <!-- Refresh the page every few seconds. -->
         <meta http-equiv="refresh" content="30" />
 
-        <!-- We don't want these pages indexed by Google until end of BETA. -->
-        <meta name="robots" content="noindex, nofollow" />
+        <!-- Dynamicly set the title using the helper methoe. -->
+        <title>{{ page.meta_title }}</title>
+
+        <!-- Display a meta description. -->
+        <meta name="description" value="{{ page.meta_description }}" />
+
+        <!-- Control the indexability of the page using the meta tags. -->
+        <!-- This is also controlled from /robots.txt but meta gives us slight more control. -->
+        {% if page.visible_to_search %}
+            <!-- Allow indexing and following of links. -->
+            <meta name="robots" content="index, follow" />
+        {% else %}
+            <!-- Disallow indexing and following of links. -->
+            <meta name="robots" content="noindex, nofollow" />
+        {% endif %}
 
         <!-- Favicons. -->
         <!-- App Details. -->
@@ -32,9 +45,6 @@
         <!-- Mircosoft Metro Details. -->
         <meta name="msapplication-TileColor" content="#FFFFFF" />
         <meta name="msapplication-TileImage" content="{{ 'mstile-144x144.png' | asset_url }}" />
-
-        <!-- Dynamicly set the title using the helper methoe. -->
-        <title>{{ page.name }}</title>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
